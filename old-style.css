@@ -64,10 +64,6 @@ a {
 
 /* full-width content! +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-/* site width */
-.wrap {
-    max-width: 1200px;
-}
 
 .single div#primary.content-area,
 .single-material div#primary.content-area,
@@ -75,8 +71,8 @@ a {
 .single-themenseite div#primary.content-area,
 .single-organisation div#primary.content-area
 {
-    width: 100% !important;
-    padding: 0 20px 0 30px;
+    /*width: 100% !important;
+    padding: 0 20px 0 30px;*/
 }
 /* archive-themenseiten  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 .themenseite-entry{
