@@ -9,6 +9,7 @@
 
 get_header();
 global $post;
+@error_reporting(-1);
 ?>
 
     <div class="wrap">
@@ -163,7 +164,6 @@ global $post;
 			                <?php
 			                echo rw_material_get_themenliste();
 				############################
-				die('end');
 				########################
 
 			                ?>
