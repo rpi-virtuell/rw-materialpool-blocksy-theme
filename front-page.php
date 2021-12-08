@@ -75,7 +75,7 @@ global $post;
 							                <?php //echo wp_trim_words(  wp_strip_all_tags ( Materialpool_Material::get_description() )) ; ?>
                                         </p>
                                         <p class="search-head">
-							                <?php if ( Materialpool_Material::get_organisation()[0] ) {
+							                <?php if ( Materialpool_Material::get_organisation() ) {
 								                echo Materialpool_Material::organisation_facet_html() . '<br>';
 							                }
 							                if ( Materialpool_Material::get_autor() ) {
@@ -125,10 +125,10 @@ global $post;
                 <div class="clear"></div>
 	            <?php
 	            }
-				
-				
-				
-				
+
+
+
+
 	            ?>
 	            <?php
 	            $show_neu = get_field( 'show_neu' );
@@ -148,8 +148,8 @@ global $post;
 	            }
 	            ?>
 	            <?php
-				
-				
+
+
 	            $show_themenseiten = get_field( 'show_themenseiten' );
                 if ( $show_themenseiten  ) {
 		            ?>
@@ -165,7 +165,7 @@ global $post;
 				############################
 				die('end');
 				########################
-				
+
 			                ?>
                         </div>
                     </div>
