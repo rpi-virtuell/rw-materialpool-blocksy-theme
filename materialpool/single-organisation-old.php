@@ -14,9 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-
-get_header( 'materialpool' ); ?>
-<section  class="content-area">
+ThemeCore::draw_page_pre_content();
+?>
     <div id="content" class="site-content" role="main">
         <div class="autor-detail-left">
             <?php Materialpool_Organisation::logo_html(); ?>
@@ -41,6 +40,6 @@ get_header( 'materialpool' ); ?>
             </div>
         </div>
     </div>
-</section>
-<?php get_footer( 'materialpool' ); ?>
+
+<?php ThemeCore::draw_page_post_content(); ?>
 
