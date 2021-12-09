@@ -70,7 +70,8 @@ class ThemeCore {
 	    <?php do_action('blocksy:single:content:top'); ?>
 
         <?php
-        if(function_exists(blocksy_single_content()))
+        if(function_exists('blocksy_single_content'))
+            var_dump($content);
             echo blocksy_single_content($content);
         ?>
         </article>

@@ -19,7 +19,7 @@
     }
 */
 
-    ThemeCore::draw_page_pre_content();
+    ob_start();
     ?>
     <div class="entry-content material-facet-search">
         <div class="material-facetscontainer">
@@ -87,7 +87,8 @@
         </div>
     </div>
     <?php
-    ThemeCore::draw_page_post_content();
+$content = ob_get_clean();
+ThemeCore::draw_page_content($content);
 /*
 if ( 'iframe' == $wp_query->query_vars[ 'mpembed'] ) {
     get_footer('materialpool-iframe' );

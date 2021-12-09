@@ -7,7 +7,7 @@
  *
  */
 
-ThemeCore::draw_page_pre_content();
+ob_start();
 
     $show_title = get_field( 'show_title' );
 
@@ -258,5 +258,8 @@ ThemeCore::draw_page_pre_content();
         </div>
     </div>
     <div class="clear"></div>
-    <?php endif;?>
-<?php ThemeCore::draw_page_post_content();
+    <?php endif;
+
+    $content = ob_get_clean();
+    ThemeCore::draw_page_content($content);
+    ?>
