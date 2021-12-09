@@ -5,13 +5,30 @@ if (! defined('WP_DEBUG')) {
 
 
 include_once "inc/themeCore.php";
+include_once "inc/pluginSource.php";
 
 
 
 add_action( 'wp_enqueue_scripts', function () {
+	//stylesheets
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style('old-styles', get_stylesheet_directory_uri().'/old-style.css');
 	wp_enqueue_style('theme-styles', get_stylesheet_directory_uri().'/style.css');
+
+	wp_enqueue_style( 'contextmenu', trailingslashit( get_stylesheet_directory_uri() ) . 'css/jquery.contextMenu.min.css', array(  ) );
+	wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.6.3/css/all.css');
+
+	//javscripts
+	//für accordions notwendig
+	wp_enqueue_style('jqueryui', "//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css");
+	wp_enqueue_script( 'jquery-ui', '//code.jquery.com/ui/1.12.1/jquery-ui.js', array (), 1.1, true);
+
+	wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/js/clipboard.min.js', array (), 1.1, true);
+	wp_enqueue_script( 'load_rw_facet_js', get_stylesheet_directory_uri() . '/js/facet_labels.js', array (), 0.1, true);
+	wp_enqueue_script( 'load_toc_js', get_stylesheet_directory_uri() . '/js/jquery.toc.js', array (), 0.1, true);
+	wp_enqueue_script( 'load_rw_materialpool_js', get_stylesheet_directory_uri() . '/js/materialpool.js', array (), 0.1, true);
+	wp_enqueue_script( 'load_rw_materialpool_js_menue', get_stylesheet_directory_uri() . '/js/jquery.contextMenu.min.js', array ('load_rw_materialpool_js'), 0.1, true);
+	wp_enqueue_script( 'load_rw_materialpool_js_ui_position', get_stylesheet_directory_uri() . '/js/jquery.ui.position.min.js', array (), 0.1, true);
 });
 
 
@@ -52,3 +69,14 @@ if ( !function_exists( 'chld_thm_cfg_parent_css' ) ):
     }
 endif;
 add_action( 'wp_enqueue_scripts', 'chld_thm_cfg_parent_css', 10 );
+
+
+function frontend_ajax() {
+	echo '<script type = "text/javascript" >';
+	echo 'var ajaxurl = "'. admin_url('admin-ajax.php') . '"' ;
+	echo '</script >';
+}
+
+if ( !is_admin() ) {
+	add_action( 'wp_head', 'frontend_ajax');
+}
