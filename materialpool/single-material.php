@@ -13,14 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
-
-get_header( 'materialpool' ); ?>
-
-<div class="wrap">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
-
-            <?php
+ThemeCore::draw_page_pre_content();
             /* Start the Loop */
             while ( have_posts() ) : the_post();
                 if ( ! Materialpool_Material::is_special() &&  ! Materialpool_Material::is_viewer() && ! Materialpool_Material::is_playable()   ) {
@@ -35,11 +28,4 @@ get_header( 'materialpool' ); ?>
                 endif;
 
             endwhile; // End of the loop.
-            ?>
-
-        </main><!-- #main -->
-    </div><!-- #primary -->
-    <div id="secondary" style="display: none"></div>
-</div><!-- .wrap -->
-
-<?php get_footer();
+ThemeCore::draw_page_post_content();
