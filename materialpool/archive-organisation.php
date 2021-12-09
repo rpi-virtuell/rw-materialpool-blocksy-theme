@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-ThemeCore::draw_page_pre_content();
+ob_start()
 ?>
             <div class="entry-content material-facet-search">
                 <div class="material-facetscontainer">
@@ -42,4 +42,5 @@ ThemeCore::draw_page_pre_content();
 
 
 <?php
-ThemeCore::draw_page_post_content();
+$content = ob_get_clean();
+ThemeCore::draw_page_content($content);

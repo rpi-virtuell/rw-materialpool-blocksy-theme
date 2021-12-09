@@ -19,7 +19,7 @@ class ThemeCore {
      *
      *
 	 */
-    static function draw_page_pre_content(){
+    static function draw_page_content($content){
 
         if(WP_DEBUG){
 	        @error_reporting(-1);
@@ -55,22 +55,6 @@ class ThemeCore {
 			$data_container_output = 'data-content="' . $page_structure . '"';
 		}
 
-		ob_start();
-		the_content(
-			sprintf(
-				wp_kses(
-				/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'blocksy' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			)
-		);
-		$post_content = ob_get_clean();
 
 		?>
 
@@ -84,28 +68,24 @@ class ThemeCore {
 
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	    <?php do_action('blocksy:single:content:top'); ?>
-		<?php
 
-	}
-
-	/**
-	 * nach dem Content s.o.
-	 */
-	static function draw_page_post_content(){
-		?>
+        <?php
+        if(function_exists(blocksy_single_content()))
+            echo blocksy_single_content($content);
+        ?>
         </article>
-		<?php do_action('blocksy:single:content:bottom'); ?>
-		<?php get_sidebar(); ?>
+            <?php do_action('blocksy:single:content:bottom'); ?>
+            <?php get_sidebar(); ?>
 
-		<?php do_action('blocksy:single:container:bottom'); ?>
-		</div>
+            <?php do_action('blocksy:single:container:bottom'); ?>
+        </div>
 
-		<?php
+        <?php
 
-		blocksy_display_page_elements('separated');
+        blocksy_display_page_elements('separated');
 
-		have_posts();
-		wp_reset_query();
-		get_footer();
+        have_posts();
+        wp_reset_query();
+        get_footer();
 	}
 }

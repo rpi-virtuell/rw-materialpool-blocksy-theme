@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-ThemeCore::draw_page_pre_content();
+ob_start();
 ?>
     <div id="content" class="site-content" role="main">
         <div class="autor-detail-left">
@@ -41,5 +41,7 @@ ThemeCore::draw_page_pre_content();
         </div>
     </div>
 
-<?php ThemeCore::draw_page_post_content(); ?>
+<?php
+$content = ob_get_clean();
+ThemeCore::draw_page_content($content);
 
