@@ -4,4 +4,9 @@
  * Author: Creative Themes
  * Template: blocksy
  * Text Domain: blocksy
- */ 
+ */
+.clear {
+    clear: both;
+    width: 100%;
+    height: 1px;
+}
