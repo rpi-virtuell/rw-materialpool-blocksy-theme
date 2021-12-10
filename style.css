@@ -9,3 +9,31 @@
     clear: both;
     width: 100%;
 }
+.page-template-suche-php .sidebar {
+    background-color: #fff;
+    display: none;
+    width: 300px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 1px 12px 2px aliceblue;
+    padding: 0 20px 0 20px;
+}
+
+@media (max-width: 480px) {
+
+    .page-template-suche-php .sidebar {
+        position: absolute;
+        z-index: 2;
+    }
+}
+
+.material-filter-button{
+    background-color: #D95821;
+    width: auto;
+    padding: 3px 20px;
+    border-radius: 3px;
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0 10px;
+}

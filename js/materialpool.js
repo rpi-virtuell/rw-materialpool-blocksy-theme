@@ -195,4 +195,10 @@ jQuery(document).ready(function ($) {
 
         }
     });
+
+    jQuery('.material-filter-button').on('click', function(){
+        jQuery('.sidebar').toggle({'duration':1000});
+    })
+
+
 });
