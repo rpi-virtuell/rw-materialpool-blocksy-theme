@@ -71,6 +71,13 @@
             </td>
         </tr>
     <?php } ?>
+    <tr>
+        <td colspan="2">
+            <p class="meta-table-caption">
+                Eigenschaften
+            </p>
+        </td>
+    </tr>
     <?php if (Materialpool_Material::bildungsstufen()) { ?>
         <tr>
             <td>
@@ -175,7 +182,9 @@
         <tr>
             <td colspan="2">
                 <div class="material-detail-parent material-links">
-                    <?php echo Materialpool_Material::cover_facet_html_noallign(Materialpool_Material::get_werk_id()) ?>
+                    <a href="<?php echo get_permalink(Materialpool_Material::get_werk_id()); ?>">
+                        <?php echo Materialpool_Material::cover_facet_html_noallign(Materialpool_Material::get_werk_id()) ?>
+                    </a>
                     <p class="meta-table-caption">
                         <?php Materialpool_Material::werk_html(); ?>
                     </p>

@@ -61,8 +61,7 @@
                 <?php echo Materialpool_Material::cta_link(); ?>
                 <?php echo Materialpool_Material::cta_url2clipboard(); ?>
             </div>
-        </div>
-        <div class="material-detail-content material-column">
+
             <div class="material-detail-shortdescription material-desc">
                 <?php Materialpool_Material::shortdescription(); ?>
             </div>
@@ -82,7 +81,6 @@
             </div>
             <?php get_template_part('template-parts/material/content-part-links', get_post_format()); ?>
         </div>
-
 
         <div class="material-detail-right material-meta-container material-column">
             <?php get_template_part('template-parts/material/content-part-meta', get_post_format()); ?>
