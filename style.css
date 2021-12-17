@@ -9,6 +9,11 @@
     clear: both;
     width: 100%;
 }
+.material-grid-layout {
+    display: grid;
+    align-content: space-around;
+    grid-gap: 30px;
+}
 .page-template-suche-php .sidebar {
     background-color: #fff;
     display: none;
@@ -26,14 +31,16 @@
     }
 }
 
-.material-filter-button{
+.material-filter-button button {
     background-color: #D95821;
-    width: auto;
+    width: 110px;
     padding: 3px 20px;
     border-radius: 3px;
     display: block;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 12px;
-    margin: 0 10px;
+    text-align: center;
+    margin-top: 20px;
 }
+
