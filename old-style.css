@@ -446,7 +446,7 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
 
 }
 
-.material-grid-layout{
+.material-grid-layout {
     display: grid;
     align-content: space-around;
     grid-gap: 30px;
@@ -458,9 +458,9 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
     display: flex;
 }
 
-.facet-treffer.themenseite, .facet-treffer.themenseite a {
-    background-color: steelblue;
-    color: #fff;
+.entry-card.themenseite, .themenseite h2 a {
+    background-color: steelblue !important;
+    color: #fff !important;
 }
 
 
@@ -761,20 +761,25 @@ div.material-suche .facetwp-btn:hover {
 .material-meta {
     margin-top: 30px;
 }
-.material-meta-table p{
+
+.material-meta-table p {
     margin-bottom: unset;
     display: block ruby;
 }
-.material-meta-table .meta-table-caption{
+
+.material-meta-table .meta-table-caption {
     font-weight: bold;
     text-align: center;
 }
-.material-meta-table .materialpool-template-material-organisation{
+
+.material-meta-table .materialpool-template-material-organisation {
     text-align: center;
 }
-.material-meta-table .materialpool-template-material-autor-logo{
+
+.material-meta-table .materialpool-template-material-autor-logo {
     display: inline-block;
 }
+
 .material-detail-description-footer {
     font-size: 84%;
     font-style: italic;
@@ -1121,25 +1126,28 @@ footer, footer a, footer h2.widget-title {
     padding: 5px 0 20px 5px;
     border-radius: 3px;
 }
-.autor-archiv{
+
+.autor-archiv {
     display: flex;
 }
 
-.author-picture{
+.author-picture {
     height: 100%;
     width: 30%;
 }
-.author-picture img{
+
+.author-picture img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.author-info{
+.author-info {
     margin-left: 20px;
     height: 100%;
     width: 70%;
 }
+
 .author-info h2 {
     font-size: 1.5em;
     font-weight: 600;
