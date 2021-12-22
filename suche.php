@@ -23,14 +23,14 @@ ob_start();
 ?>
     <div class="material-suche">
         <?php echo facetwp_display('facet', 'suche'); ?>
+        <div class="material-filter-button">
+            <button type="button">
+                <span class="dashicons dashicons-filter"></span>
+                Filter
+            </button>
+        </div>
     </div>
 
-    <div class="material-filter-button">
-        <button type="button">
-            <span class="dashicons dashicons-filter"></span>
-            Filter
-        </button>
-    </div>
 
     <div class="entry-content material-facet-search">
         <div class="sidebar">
