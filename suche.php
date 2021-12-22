@@ -21,6 +21,10 @@ if (!defined('ABSPATH')) {
 
 ob_start();
 ?>
+    <div class="material-suche">
+        <?php echo facetwp_display('facet', 'suche'); ?>
+    </div>
+
     <div class="material-filter-button">
         <button type="button">
             <span class="dashicons dashicons-filter"></span>
@@ -30,9 +34,6 @@ ob_start();
 
     <div class="entry-content material-facet-search">
         <div class="sidebar">
-            <div class="material-suche">
-                <?php echo facetwp_display('facet', 'suche'); ?>
-            </div>
             <div class="first-search-facets">
                 <?php echo facetwp_display('facet', 'bildungsstufe'); ?>
                 <?php echo facetwp_display('facet', 'kompetenzen'); ?>

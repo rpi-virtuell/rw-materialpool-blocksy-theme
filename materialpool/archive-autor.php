@@ -13,19 +13,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 ob_start()
 ?>
     <div class="entry-content material-facet-search">
-        <div class="material-facetscontainer">
-            <div class="mfacet-wrap">
+            <div class="sidebar">
                 <div class="first-search-facets">
                     <?php echo facetwp_display( 'facet', 'autor_organisation' ); ?>
                 </div>
             </div>
-        </div>
         <div class="material-resultcontainer">
             <div class="right material-detail-buttons material-column">
                 <?php Materialpool_Autor::autor_request_button2(); ?>
             </div>
             <div class="material-suche">
                 <?php echo facetwp_display( 'facet', 'autor_suche' ); ?>
+
+
+                <div class="material-filter-button">
+                    <button type="button">
+                        <span class="dashicons dashicons-filter"></span>
+                        Filter
+                    </button>
+                </div>
+
             </div>
             <div class="clear"></div>
             <div class="material-selection"><?php echo facetwp_display( 'selections' ); ?></div>

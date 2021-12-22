@@ -14,7 +14,7 @@
                         <div class="facet-treffer-content themenseite">
                             <h2><a href="<?php the_permalink(); ?>">Themenseite: <?php the_title(); ?></a></h2>
                             <a class="search-cover boundless-image" href="<?php the_permalink(); ?>">
-                                <img src="<?php echo catch_thema_image() ?>">
+                                <img src="<?php echo catch_thema_image() ?>" alt="">
                                 <span class="ct-ratio" style="padding-bottom: 75%"></span>
                             </a>
                             <p class="thema-excerpt">
@@ -31,17 +31,17 @@
 
                     <div class="facet-treffer">
                         <div class="facet-treffer-content">
-
                             <h2>
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
-
+                            <?php if (!empty(Materialpool_Material::get_cover())) { ?>
                             <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
-                                <?php if (!empty(Materialpool_Material::get_cover())) { ?>
+
                                     <img src="<?php echo Materialpool_Material::get_cover() ?>" alt="">
                                     <span class="ct-ratio" style="padding-bottom: 75%"></span>
-                                <?php } ?>
+
                             </a>
+                            <?php } ?>
                             <p class="material-picture-source">
                                 <?php
                                 if (Materialpool_Material::get_picture_source() != '') {

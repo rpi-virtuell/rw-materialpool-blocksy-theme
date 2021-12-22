@@ -237,3 +237,99 @@ function catch_thema_image()
 }
 
 add_filter('facetwp_facet_html', 'my_facetwp_facet_html', 10, 2);
+
+/*add accordeons to [accordion].<h3>..[/accordion] shortcode*/
+
+function rw_add_accordion($atts, $content){
+
+    $description = str_replace('</h3>','</h3><div>',do_shortcode($content));
+    $description = str_replace('<h3>','</div><h3>',$description);
+
+
+    $html = '<div class="accordion"><div>'.$description.'</div></div>';
+    $html = str_replace('<div></div>','',$html);
+    $html .= "
+             <script>
+                  jQuery( function() {
+                    jQuery( '.accordion' ).accordion({
+                      collapsible: true,
+                      heightStyle: 'content',
+                      active:false,
+                      header:'h3'
+                    });
+                  } );
+             </script>
+            
+            ";
+    return $html;
+}
+add_shortcode( 'accordion','rw_add_accordion' );
+
+/*add tabs to [tabs].<h5>..[/tabs] shortcode*/
+
+function rw_add_tabs($atts, $content){
+
+    $content = do_shortcode($content);
+
+    $id = 'tabs-'.generateRandomString(4);
+
+    $html = '<div id="'.$id.'"><ul>';
+
+    $pattern = '#<h5>(.*)</h5>#i';
+
+    $tabs = array();
+
+    preg_match_all($pattern, $content,$matches);
+    $i=0;
+
+
+    foreach($matches[1] as $m){
+        $i ++;
+        $tabs[$i]=$m;
+    }
+
+    $tabids=array();
+
+    foreach ($tabs as $d=>$tab){
+        $tabid = $id.$d;
+        $html .= "<li><a href=\"#".$tabid."\">".$tab."</a></li>";
+        $tabids[$d]= $tabid;
+    }
+
+    $html .= '</ul>';
+
+
+    $content = preg_replace('#(<h5>.*</h5>)#','[tab]$1',$content);
+    $parts = explode('[tab]',$content);
+
+    $i = 0;
+    foreach($parts as $part){
+        if($i>0){
+            $html .= '<div id="'.$tabids[$i].'">'.$part.'</div>';
+        }
+        $i++;
+    }
+
+    $html .= "</div>
+             <script>
+                  jQuery( function() {
+                     jQuery( '#" . $id . "' ).tabs({
+                        collapsible: true
+                     });
+                  } );
+             </script>
+            
+            ";
+    return $html;
+}
+add_shortcode( 'tabs','rw_add_tabs' );
+
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}

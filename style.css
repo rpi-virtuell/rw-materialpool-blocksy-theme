@@ -9,15 +9,17 @@
     clear: both;
     width: 100%;
 }
+
 .material-grid-layout {
     display: grid;
     align-content: space-around;
     grid-gap: 30px;
 }
-.page-template-suche-php .sidebar {
+
+.sidebar {
     background-color: #fff;
     display: none;
-    width: 300px;
+    width: 300px !important;
     border: 1px solid #ddd;
     box-shadow: 2px 1px 12px 2px aliceblue;
     padding: 0 20px 0 20px;
@@ -25,7 +27,7 @@
 
 @media (max-width: 480px) {
 
-    .page-template-suche-php .sidebar {
+    .sidebar {
         position: absolute;
         z-index: 2;
     }

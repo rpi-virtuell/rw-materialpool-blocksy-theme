@@ -247,7 +247,7 @@ span.thema-title a {
 
 .entry-content.organisation {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     min-width: 400px;
 }
 
@@ -258,12 +258,12 @@ span.thema-title a {
     padding: 0 15px 5px 5px;
 }
 
-div.organisation-left .organisation-image img {
+.organisation-image img {
     width: 100%;
     opacity: 0;
 }
 
-div.organisation-left .organisation-image {
+.organisation-image {
     width: 103%;
     background-size: contain;
     background-position: left center;
@@ -302,7 +302,7 @@ div.organisation-left .image-alt, .autor-left .image-alt {
 
 .entry-content.autor {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row;
     min-width: 400px;
 }
 
@@ -350,8 +350,7 @@ div.organisation-left .image-alt, .autor-left .image-alt {
 }
 
 .autor-content {
-    flex: 1;
-    padding: 0 4%;
+margin-top: 15px !important;
 }
 
 .autor-right {
@@ -435,9 +434,10 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
 }
 
 .entry-card.alpika {
-    background-color: lightyellow !important;
+    background: lightyellow url('/wp-content/plugins/rw-materialpool/assets/alpika.png') no-repeat left bottom !important;
     border: 1px solid #FEDFB2 !important;
     padding-top: 40px !important;
+
 }
 
 .entry-card.special {
@@ -1132,20 +1132,22 @@ footer, footer a, footer h2.widget-title {
 }
 
 .author-picture {
-    height: 100%;
-    width: 30%;
+ display: block;
+    margin: auto;
 }
 
 .author-picture img {
-    height: 100%;
-    width: 100%;
+    height: 100px;
+    width: 100px;
     object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
 }
 
 .author-info {
     margin-left: 20px;
     height: 100%;
-    width: 70%;
+    width: 60%;
 }
 
 .author-info h2 {
@@ -1156,12 +1158,6 @@ footer, footer a, footer h2.widget-title {
 }
 
 /* Organisationenliste */
-
-.post-type-archive-organisation .facet-treffer {
-    background: #fff;
-    padding: 5px 0 20px 5px;
-    border-radius: 3px;
-}
 
 .material-detail-description ul, ol {
     padding-left: 20px;
