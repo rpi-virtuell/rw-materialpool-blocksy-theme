@@ -16,23 +16,6 @@
     ?>
     <header class="entry-header">
         <?php
-        if ( 'material' === get_post_type() ) :
-            echo '<div class="entry-meta">';
-            if ( is_single() && !Materialpool_Material::is_special()) {?>
-                <div class="material-detail-url">
-                    <a href="<?php Materialpool_Material::url(); ?>">
-                        <?php Materialpool_Material::url_shorten(); ?>
-                    </a>
-                </div>
-
-                <?php
-            }else {
-                echo twentyseventeen_time_link();
-                twentyseventeen_edit_link();
-            }
-            echo '</div><!-- .entry-meta -->';
-        endif;
-
         if ( is_single() ) {
             the_title( '<h1 class="entry-title">', '</h1>' );
         } else {
@@ -107,9 +90,6 @@
                 </div>
             <?php endif;?>
         </div>
-        <footer class="material-detail-footer">
-            <?php  get_template_part('template-parts/material/content-part-footer', get_post_format()); ?>
-        </footer>
         <?php
 
 

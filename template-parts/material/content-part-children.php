@@ -6,7 +6,6 @@
  * Time: 07:34
  */
 ?>
-<div style="height:30px; width:100px;"></div>
 <?php if (Materialpool_Material::is_part_of_werk()) : ?>
     <div class="material-detail-parent material-links">
         <h3>Dieses Material ist aus der Sammlung:</h3>
