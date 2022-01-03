@@ -17,20 +17,14 @@
 }
 
 .sidebar {
+    position: absolute;
+    z-index: 2;
     background-color: #fff;
     display: none;
     width: 300px !important;
     border: 1px solid #ddd;
     box-shadow: 2px 1px 12px 2px aliceblue;
     padding: 0 20px 0 20px;
-}
-
-@media (max-width: 480px) {
-
-    .sidebar {
-        position: absolute;
-        z-index: 2;
-    }
 }
 
 .material-filter-button button {
@@ -44,5 +38,209 @@
     font-size: 12px;
     text-align: center;
     margin-top: 20px;
+}
+
+.material-detail-grid {
+    display: grid;
+    grid-template-areas:    "snapshot snapshot snapshot origin"
+                            "snapshot snapshot snapshot meta"
+                            "desc desc desc meta"
+                            "links links links links"
+                            "children children children children";
+    grid-gap: 50px;
+    margin-top: 30px;
+}
+
+.autor-detail-grid {
+    display: grid;
+    grid-template-areas: "header" "search" "material";
+}
+
+.detail-autor-header {
+    display: grid;
+    grid-template-areas: "spacer image award" "detail detail detail";
+}
+
+@media (max-width: 800px) {
+    .material-detail-grid {
+        grid-template-areas: "snapshot""origin""desc""meta""links""children";
+
+    }
+
+    .detail-autor-header {
+        grid-template-areas: "image" "award" "detail";
+    }
+
+}
+
+.detail-element {
+    display: table-cell;
+}
+
+.material-detail-grid .detail-snapshot {
+    grid-area: snapshot;
+}
+
+.material-detail-grid .normal-cover {
+    border-radius: 30px;
+    background: url('/wp-content/themes/rw_materialpool-blocksy-theme/assets/material-hintergund.jpg');
+    background-size: cover;
+    text-align: center;
+}
+
+.material-detail-grid .normal-cover img{
+    width: 60%;
+    margin: 20px 0;
+}
+.material-detail-grid .special-cover {
+    padding: 0;
+    margin: 30px 0 50px;
+}
+
+.material-detail-grid .detail-cover-source ,.material-detail-grid .special-cover p{
+    text-align: end;
+    font-style: italic;
+    font-size: small;
+
+}
+
+.material-detail-grid .detail-snapshot-footer{
+    margin-top: 20px;
+}
+
+.material-detail-grid .detail-origin {
+    grid-area: origin;
+}
+
+.material-detail-grid .detail-origin, .material-detail-grid .detail-meta {
+
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-organisation {
+    text-align: center;
+    max-height: 200px;
+    background: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.detail-herkunft-organisation .materialpool-template-material-organisation {
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-organisation .materialpool-template-material-organisation-logo {
+    max-height: 100px;
+    width: fit-content;
+    background-position: center;
+    margin: auto;
+}
+
+.detail-herkunft-organisation .materialpool-template-material-organisation-logo img {
+    max-height: 100px;
+
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-author {
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.detail-herkunft-author .detail-herkunft-single-author {
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-author .materialpool-template-material-autor-logo {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-size: cover;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-author .materialpool-template-material-autor {
+}
+
+.detail-origin .detail-parent {
+    background: #ddd;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.material-detail-grid .detail-short-desc {
+    font-size: large;
+}
+
+.material-detail-grid .detail-desc {
+    grid-area: desc;
+}
+
+.material-detail-grid .detail-desc .description {
+    height: auto;
+}
+
+.detail-desc .cta-button{
+    width: 49%;
+}
+
+.material-detail-grid .detail-desc .description-footer {
+    text-align: end;
+    font-style: italic;
+    font-size: small;
+}
+
+.material-detail-grid .detail-meta {
+    grid-area: meta;
+    /*    width: min-content; */
+}
+
+.material-detail-grid .detail-links {
+    grid-area: links;
+}
+
+.material-detail-grid .detail-children {
+    grid-area: children;
+}
+
+.detail-autor-header {
+    grid-area: header;
+    justify-content: space-around;
+    background: #ddd;
+    border-radius: 15px;
+}
+
+.detail-autor-spacer {
+    grid-area: spacer;
+}
+
+.accent {
+    background: #999999;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+.detail-autor-image {
+    grid-area: image;
+    display: block;
+    max-width: 200px;
+}
+
+.detail-autor-award {
+    grid-area: award;
+}
+
+.detail-autor-header-detail {
+    grid-area: detail;
+}
+
+.detail-autor-search {
+    grid-area: search;
+}
+
+.detail-autor-material {
+    grid-area: material;
 }
 

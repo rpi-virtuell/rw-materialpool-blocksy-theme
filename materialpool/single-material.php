@@ -10,24 +10,23 @@
  * @version    0.0.1
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 ob_start();
-            /* Start the Loop */
-            while ( have_posts() ) : the_post();
-                if ( ! Materialpool_Material::is_special() &&  ! Materialpool_Material::is_viewer() && ! Materialpool_Material::is_playable()   ) {
-                    get_template_part('template-parts/material/content', get_post_format());
-                }else{
-                    get_template_part('template-parts/material/content-special', get_post_format());
-                }
+/* Start the Loop */
+while (have_posts()) : the_post();
+    get_template_part('template-parts/material/content', get_post_format());
+    // If comments are open or we have at least one comment, load up the comment template.
+    if (function_exists('the_ratings')) {
+        the_ratings();
+    }
+    if (comments_open() || get_comments_number()) :
 
-                // If comments are open or we have at least one comment, load up the comment template.
-                if ( comments_open() || get_comments_number() ) :
-                    comments_template();
-                endif;
+        comments_template();
+    endif;
 
-            endwhile; // End of the loop.
+endwhile; // End of the loop.
 
 $content = ob_get_clean();
 ThemeCore::draw_page_content($content);

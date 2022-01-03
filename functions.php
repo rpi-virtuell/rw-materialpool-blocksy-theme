@@ -193,7 +193,7 @@ function facetwp_query_args_themenseiten($query_args, $class)
             $query_args = $material_id_list;
         }
 
-    } elseif ($post->post_type == "themenseite" && !is_embed()) {
+    } elseif (is_object($post) && $post->post_type == "themenseite" && !is_embed()) {
 
         foreach (Materialpool_Themenseite::get_gruppen($post->ID) as $gruppe) {
             if (!$gruppe['auswahl']) continue;

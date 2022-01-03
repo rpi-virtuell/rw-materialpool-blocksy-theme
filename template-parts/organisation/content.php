@@ -111,7 +111,7 @@ if (!defined('ABSPATH')) {
                     </tr>
                 <?php endif; ?>
 
-                <?php if (Materialpool_Organisation::get_autor()[0]): ?>
+                <?php if (!empty(Materialpool_Organisation::get_autor())): ?>
                     <tr>
                         <td>
                             <div class="material-detail-meta-author material-meta">

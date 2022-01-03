@@ -72,7 +72,7 @@
                         </div>
                         <div class="author">
                             <?php
-                            if (!empty(Materialpool_Material::get_autor())) {
+                            if (Materialpool_Material::has_autor()) {
                                 ?>
                                 <img class="taxonomy-icon"
                                      src="<?php echo get_stylesheet_directory_uri() . "/assets/003-user.svg" ?> "
