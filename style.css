@@ -51,26 +51,29 @@
     margin-top: 30px;
 }
 
-.autor-detail-grid {
+.autor-detail-grid , .organisation-detail-grid{
     display: grid;
-    grid-template-areas: "header" "search" "material";
+    grid-template-areas:    "header"
+                            "search"
+                            "material";
 }
 
-.detail-autor-header {
-    display: grid;
-    grid-template-areas: "spacer image award" "detail detail detail";
-}
+
 
 @media (max-width: 800px) {
     .material-detail-grid {
-        grid-template-areas: "snapshot""origin""desc""meta""links""children";
+        grid-template-areas:    "snapshot"
+                                "origin"
+                                "desc"
+                                "meta"
+                                "links"
+                                "children";
 
     }
 
-    .detail-autor-header {
-        grid-template-areas: "image" "award" "detail";
+    .detail-autor-spacer{
+        display: none;
     }
-
 }
 
 .detail-element {
@@ -97,7 +100,9 @@
     margin: 30px 0 50px;
 }
 
-.material-detail-grid .detail-cover-source ,.material-detail-grid .special-cover p{
+.material-detail-grid .detail-cover-source ,
+.material-detail-grid .special-cover p ,
+.autor-detail-grid .autor-image{
     text-align: end;
     font-style: italic;
     font-size: small;
@@ -140,7 +145,8 @@
 
 }
 
-.material-detail-grid .detail-origin .detail-herkunft-author {
+.material-detail-grid .detail-origin .detail-herkunft-author ,
+.organisation-detail-grid .organisation-author .detail-organisation-author{
     align-items: center;
     text-align: center;
     display: grid;
@@ -151,16 +157,14 @@
 .detail-herkunft-author .detail-herkunft-single-author {
 }
 
-.material-detail-grid .detail-origin .detail-herkunft-author .materialpool-template-material-autor-logo {
+.detail-herkunft-author .materialpool-template-material-autor-logo,
+.detail-organisation-author .materialpool-template-material-autor-logo{
     height: 75px;
     width: 75px;
     border-radius: 50%;
     background-size: cover;
     display: inline-block;
     margin-right: 5px;
-}
-
-.material-detail-grid .detail-origin .detail-herkunft-author .materialpool-template-material-autor {
 }
 
 .detail-origin .detail-parent {
@@ -180,6 +184,7 @@
 
 .material-detail-grid .detail-desc .description {
     height: auto;
+    margin-bottom: 20px;
 }
 
 .detail-desc .cta-button{
@@ -200,47 +205,81 @@
 .material-detail-grid .detail-links {
     grid-area: links;
 }
-
 .material-detail-grid .detail-children {
     grid-area: children;
 }
 
 .detail-autor-header {
+    display: grid;
+    grid-template-areas:    "cover"
+                            "detail";
+}
+
+.detail-autor-header , .detail-organisation-header{
     grid-area: header;
-    justify-content: space-around;
     background: #ddd;
     border-radius: 15px;
+    justify-items: center;
 }
 
-.detail-autor-spacer {
-    grid-area: spacer;
+.detail-autor-header .autor-cover{
+    grid-area: cover;
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
+.detail-autor-header .detail-autor-header-detail{
+    grid-area: detail;
+    margin-bottom: 20px;
+}
+
+.detail-autor-header .autor-cover div{
+   flex: 1;
+}
+.detail-autor-spacer{
+    margin: 40px 40px;
+    text-align: center;
+}
 .accent {
     background: #999999;
-    margin-top: 10px;
     border-radius: 15px;
 }
 
 .detail-autor-image {
-    grid-area: image;
+    margin-top: 40px;
     display: block;
-    max-width: 200px;
+    max-width:  200px;
 }
 
-.detail-autor-award {
-    grid-area: award;
-}
-
-.detail-autor-header-detail {
-    grid-area: detail;
-}
-
-.detail-autor-search {
+.detail-autor-search , .detail-organisation-search{
     grid-area: search;
 }
 
-.detail-autor-material {
+.detail-autor-search .entry-title{
+   text-align: center;
+}
+
+.detail-autor-material, .detail-organisation-material {
     grid-area: material;
 }
 
+.detail-organisation-header {
+    display: grid;
+    grid-template-areas:    "cover detail";
+}
+
+
+.organisation-info{
+    grid-area: cover;
+}
+.organisation-author{
+    grid-area: detail;
+}
+.organisation-detail-grid .organisation-cover{
+ text-align: center;
+}
+.organisation-cover img{
+    max-height: 200px;
+    max-width: 200px;
+}
