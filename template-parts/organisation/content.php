@@ -39,7 +39,7 @@ if (!defined('ABSPATH')) {
                     <?php if (Materialpool_Organisation::is_alpika()): ?>
                         <p>
                             <img class="alpika-logo"
-                                src="http://material.rpi-virtuell.de/wp-content/plugins/rw-materialpool//assets/alpika.png">
+                                 src="http://material.rpi-virtuell.de/wp-content/plugins/rw-materialpool//assets/alpika.png">
                             <?php Materialpool_Organisation::title(); ?> ist Teil der
                             <a href="http://www.relinet.de/alpika.html">Arbeitsgemeinschaft</a>
                             der Pädagogischen Institute und Katechetischen Ämter
@@ -59,15 +59,14 @@ if (!defined('ABSPATH')) {
             <div class="organisation-author">
 
                 <?php if (!empty(Materialpool_Organisation::get_autor())) { ?>
-                        <?php
-                        $accordion = '<h3>Autor:innen</h3>';
+                    <?php
+                    $accordion = '<h3>Autor:innen</h3>';
                     $verweise = Materialpool_Organisation::get_autor();
-                        $accordion .= '<div class="detail-organisation-author" ';
-                        if (count($verweise) == 1)
-                            $accordion .= 'style = "grid-template-columns: unset"';
-                        $accordion .= '>';
-                       if (!empty($verweise) && is_array($verweise))
-                        {
+                    $accordion .= '<div class="detail-organisation-author" ';
+                    if (count($verweise) == 1)
+                        $accordion .= 'style = "grid-template-columns: unset"';
+                    $accordion .= '>';
+                    if (!empty($verweise) && is_array($verweise)) {
                         foreach ($verweise as $verweis) {
                             if (empty($verweis))
                                 continue;
@@ -80,8 +79,7 @@ if (!defined('ABSPATH')) {
                             $accordion .= "<div class='detail-herkunft-single-author'>";
                             if ($logo != '') {
                                 $accordion .= '<a href="' . $url . '" style="background-image:url(\'' . $logo . '\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="' . $logo . '"></a>';
-                            }
-                            else {
+                            } else {
                                 $accordion .= '<a href="' . $url . '" style="background-image:url(\'/wp-content/themes/rw_materialpool-blocksy-theme/assets/Portrait_placeholder.png\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="../../assets/Portrait_placeholder.png"></a>';
                             }
                             $accordion .= '<div class="detail-herkunft-single-author-name">';
@@ -91,8 +89,8 @@ if (!defined('ABSPATH')) {
                         }
                         $accordion .= "</div>";
                         echo do_shortcode('[accordion]' . $accordion . '[/accordion]');
-                        }
-                        ?>
+                    }
+                    ?>
                 <?php } ?>
 
             </div>
@@ -108,38 +106,47 @@ if (!defined('ABSPATH')) {
 
             endif; ?>
 
-            <div class="sidebar">
-                <div class="first-search-facets">
-                    <?php echo facetwp_display('facet', 'bildungsstufe'); ?>
-                    <?php echo facetwp_display('facet', 'medientyp'); ?>
 
-                </div>
-            </div>
             <div class="organisation-content">
                 <div class="material-suche">
                     <?php echo facetwp_display('facet', 'suche'); ?>
+                    <div class="material-filter-button">
+                        <button type="button">
+                            <span class="dashicons dashicons-filter"></span>
+                            Filter
+                        </button>
+
+                    </div>
                 </div>
                 <div class="clear"></div>
                 <div class="material-selection">
                     <?php echo facetwp_display('selections'); ?>
                 </div>
-            </div>
+                <div class="sidebar">
+                    <div class="first-search-facets">
+                        <?php echo facetwp_display('facet', 'bildungsstufe'); ?>
+                        <?php echo facetwp_display('facet', 'medientyp'); ?>
 
-        </div>
-        <div class="detail-organisation-material organisation-content">
-            <div>
-                <div class="material-counter">
-                    <?php echo facetwp_display('counts'); ?> Treffer
-                </div>
-                <div class="material-pager">
-                    <?php echo facetwp_display('pager'); ?>
+                    </div>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="material-results"><?php echo facetwp_display('template', 'material_organisation'); ?></div>
-            <div class="material-pager"><?php echo facetwp_display('pager'); ?></div>
-
         </div>
+        <div class="detail-organisation-material">
+            <div class="organisation-content">
+                <div>
+                    <div class="material-counter">
+                        <?php echo facetwp_display('counts'); ?> Treffer
+                    </div>
+                    <div class="material-pager">
+                        <?php echo facetwp_display('pager'); ?>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="material-results"><?php echo facetwp_display('template', 'material_organisation'); ?></div>
+                    <div class="material-pager"><?php echo facetwp_display('pager'); ?></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <?php /*

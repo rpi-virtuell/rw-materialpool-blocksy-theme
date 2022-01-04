@@ -121,8 +121,6 @@
                                 }
                                 $accordion .= '</div>';
                                echo do_shortcode('[accordion]'.$accordion .'[/accordion]');
-                               if (!Materialpool_Material::has_organisation()){
-                               }
                                ?>
                         <?php }
                     } ?>
