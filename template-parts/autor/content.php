@@ -1,7 +1,8 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Joachim
+ * Autor-Detail-Grid
+ * User: Joachim, Daniel Reintanz
  * Date: 23.01.2017
  * Time: 17:22
  */
@@ -17,121 +18,140 @@ if (!defined('ABSPATH')) {
     endif;
     ?>
     <header class="entry-header">
-        <?php
-        if ('autor' === get_post_type()) :
-            if (is_single()) {
-                ?><h1 class="entry-title">Materialien
-                von <?php Materialpool_Autor::firstname();
-                echo " ";
-                Materialpool_Autor::lastname(); ?></h1><?php
-            } else {
-                the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
-            }
 
-        endif; ?>
     </header><!-- .entry-header -->
-    <div class="entry-content autor">
-        <div class="sidebar">
-            <div class="first-search-facets">
-                <?php echo facetwp_display('facet', 'bildungsstufe'); ?>
-                <?php echo facetwp_display('facet', 'medientyp'); ?>
-            </div>
-        </div>
-        <div class="autor-content" style="margin: 0 15px 0">
 
-            <div class="material-suche">
-                <?php echo facetwp_display('facet', 'suche'); ?>
-            </div>
-            <div class="clear"></div>
-            <div class="material-selection">
-                <?php echo facetwp_display('selections'); ?>
-            </div>
-            <div>
-                <div class="material-counter">
-                    <?php echo facetwp_display('counts'); ?> Treffer
-                </div>
-                <div class="material-pager">
-                    <?php echo facetwp_display('pager'); ?>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="material-results"><?php echo facetwp_display('template', 'material_autor'); ?></div>
-            <div class="material-pager"><?php echo facetwp_display('pager'); ?></div>
-
-        </div>
-        <div class="autor-right material-meta-container">
-            <table class="autor-meta-table">
-                <?php if (Materialpool_Autor::get_picture()): ?>
-                    <tr>
-                        <td colspan="2">
-                            <div class="autor-image">
-                                <?php Materialpool_Autor::picture_html(); ?><br>
-                                <div class="material-picture-source" style="margin-right: 0">
-                                    <?php if (Materialpool_Autor::get_picture() != '') {
-                                        ?> <a href=' <?php echo Materialpool_Autor::get_picture() ?>'> Bildquelle </a>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                            <div class="autor-name" style="text-align: center">
+    <div class="autor-detail">
+        <div class="autor-detail-grid">
+            <div class="detail-autor-header">
+                <div class="autor-cover">
+                    <div class="detail-autor-image">
+                        <img src=" <?php echo Materialpool_Autor::get_picture(); ?>"
+                             onerror=this.src="<?php echo get_stylesheet_directory_uri() . '/assets/Portrait_placeholder.png' ?>"><br>
+                        <div class="autor-image" style="margin-right: 0">
+                            <?php if (Materialpool_Autor::get_picture() != '') {
+                                ?> <a href=' <?php echo Materialpool_Autor::get_picture() ?>'> Bildquelle </a>
+                            <?php } ?>
+                        </div>
+                        <div class="autor-name" style="text-align: center">
+                            <h4>
                                 <?php Materialpool_Autor::firstname();
                                 echo " ";
                                 Materialpool_Autor::lastname(); ?>
-                            </div>
-                            <div class="material-detail-buttons material-column">
-                                <a class="cta-button" href="<?php Materialpool_Autor::url(); ?>">Webseite</a>
-                            </div>
-                        </td>
-                    </tr>
-                <?php endif; ?>
-                <?php if (Materialpool_Autor::has_organisationen()): ?>
-                    <tr>
-                        <td colspan="2">
-                            <div class="material-detail-meta-author material-meta">
-                                <h4>Wirkungsbereich</h4>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="autor-detail-info-button info-button">
+                        <button type="button">
+                            i
+                        </button>
+                    </div>
+                </div>
+                <div class="detail-autor-header-detail detail-info">
+                    <div class="detail-autor-header-aoe">
+                        <h4>Wirkungsbereich</h4>
+                        <?php if (Materialpool_Autor::has_organisationen()): ?>
+                            <div class="detail-autor-organisation">
                                 <?php Materialpool_Autor::organisation_html_cover(); ?>
                             </div>
-                        </td>
-                    </tr>
-                <?php endif; ?>
+                        <?php endif; ?>
+                        <div class="material-detail-buttons material-column">
+                            <a class="cta-button" href="<?php Materialpool_Autor::url(); ?>">Webseite</a>
+                        </div>
+                        <div class="material-detail-buttons material-column">
+                            <?php Materialpool_Autor::autor_request_button(); ?>
+                        </div>
+                        <div class="material-detail-buttons material-column">
+                            <?php Materialpool_Autor::autor_request_button2(); ?>
+                        </div>
+                    </div>
+                    <div class="detail-autor-header-material-info">
 
-                <?php if (($n = Materialpool_Autor::get_count_posts_per_autor()) > 4): ?>
-                    <tr>
-                        <td colspan="2">
-                            <?php
-                            if ($n >= 5) {
-                                $badgeclass = 'grau';
-                                $badgetitle = 'mindestens <br>5 Beiträge';
-                            }
-                            if ($n >= 20) {
-                                $badgeclass = 'gruen';
-                                $badgetitle = '<b>' . $n . '</b><br>Praxisbeiträge';
-                            }
-                            if ($n > 100) {
-                                $badgeclass = 'gold';
-                                $badgetitle = '<b>über 100</b><br>Praxisbeiträge';
-                            }
-                            ?>
-                            <div class="autor-right badges material-meta">
-                                <h4>Auszeichnungen</h4>
+                        <h4>Auszeichnungen</h4>
+                        <div class="detail-autor-header-meta">
+                            <?php echo "Anzahl der Materialien: " . Materialpool_Autor::get_count_posts_per_autor() . "</br>" ?>
+                            <?php echo "Material Aufrufe insgesamt: " . Materialpool_Autor::get_post_views_per_autor() . "</br>" ?>
+                        </div>
+
+                        <?php if (($n = Materialpool_Autor::get_count_posts_per_autor()) > 4) { ?>
+                            <div class="detail-autor-badge">
+                                <?php
+                                if ($n >= 5) {
+                                    $badgeclass = 'grau';
+                                    $badgetitle = 'mindestens <br>5 Beiträge';
+                                }
+                                if ($n >= 20) {
+                                    $badgeclass = 'gruen';
+                                    $badgetitle = '<b>über 20</b><br>Praxisbeiträge';
+                                }
+                                if ($n > 100) {
+                                    $badgeclass = 'gold';
+                                    $badgetitle = '<b>über 100</b><br>Praxisbeiträge';
+                                }
+                                ?>
                                 <div class="author-badge <?php echo $badgeclass; ?>">
                                     <?php echo $badgetitle; ?><br>
                                     im Materialpool
                                 </div>
-
                             </div>
-                        </td>
-                    </tr>
-                <?php endif; ?>
-            </table>
 
-            <div class="material-detail-buttons material-column">
-                <?php Materialpool_Autor::autor_request_button(); ?>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-            <div class="material-detail-buttons material-column">
-                <?php Materialpool_Autor::autor_request_button2(); ?>
+            <div class="detail-autor-search">
+                <?php
+                if ('autor' === get_post_type()) :
+                    if (is_single()) {
+                        ?><h1 class="entry-title">Materialien
+                        von <?php Materialpool_Autor::firstname();
+                        echo " ";
+                        Materialpool_Autor::lastname(); ?></h1><?php
+                    } else {
+                        the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
+                    }
+
+                endif; ?>
+                <div class="autor-content" style="margin: 0 15px 0">
+                    <div class="material-suche">
+                        <?php echo facetwp_display('facet', 'suche'); ?>
+                        <div class="material-filter-button">
+                            <button type="button">
+                                <span class="dashicons dashicons-filter"></span>
+                                Filter
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="material-selection">
+                        <?php echo facetwp_display('selections'); ?>
+                    </div>
+                    <div class="sidebar">
+                        <div class="first-search-facets">
+                            <?php echo facetwp_display('facet', 'bildungsstufe'); ?>
+                            <?php echo facetwp_display('facet', 'medientyp'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-autor-material">
+                <div class="autor-content">
+                    <div>
+                        <div class="material-counter">
+                            <?php echo facetwp_display('counts'); ?> Treffer
+                        </div>
+                        <div class="material-pager">
+                            <?php echo facetwp_display('pager'); ?>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="material-results">
+                        <?php echo facetwp_display('template', 'material_autor'); ?></div>
+                    <div class="material-pager"><?php echo facetwp_display('pager'); ?></div>
+
+                </div>
             </div>
         </div>
-
-
     </div>
 </article>

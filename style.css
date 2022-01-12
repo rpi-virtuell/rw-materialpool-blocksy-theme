@@ -5,6 +5,11 @@
  * Template: blocksy
  * Text Domain: blocksy
  */
+
+#less-button{
+    display: none;
+}
+
 .clear {
     clear: both;
     width: 100%;
@@ -17,20 +22,14 @@
 }
 
 .sidebar {
+    position: absolute;
+    z-index: 2;
     background-color: #fff;
     display: none;
     width: 300px !important;
     border: 1px solid #ddd;
     box-shadow: 2px 1px 12px 2px aliceblue;
     padding: 0 20px 0 20px;
-}
-
-@media (max-width: 480px) {
-
-    .sidebar {
-        position: absolute;
-        z-index: 2;
-    }
 }
 
 .material-filter-button button {
@@ -45,4 +44,364 @@
     text-align: center;
     margin-top: 20px;
 }
+.info-button button {
+    background-color: grey;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
 
+.material-detail-grid {
+    display: grid;
+    grid-template-areas:    "snapshot snapshot snapshot origin"
+                            "snapshot snapshot snapshot meta"
+                            "desc desc desc meta"
+                            "links links links links"
+                            "children children children children";
+    grid-gap: 50px;
+    margin-top: 30px;
+}
+
+.autor-detail-grid, .organisation-detail-grid {
+    display: grid;
+    grid-template-areas:    "header"
+                            "search"
+                            "material";
+}
+
+.detail-organisation-header, .detail-autor-header {
+    display: grid;
+    grid-template-areas:    "cover detail";
+    grid-gap: 10px;
+    grid-template-columns: 50% 50%;
+}
+
+.detail-autor-header-detail {
+    display: grid;
+    grid-template-areas: "aoe mat-info";
+    grid-template-columns: 50% 50%;
+}
+
+
+@media (max-width: 800px) {
+    .material-detail-grid {
+        grid-template-areas:    "snapshot"
+                                "origin"
+                                "desc"
+                                "meta"
+                                "links"
+                                "children";
+
+    }
+
+    .detail-organisation-header, .detail-autor-header {
+
+        grid-template-columns: unset;
+        grid-template-areas:    "cover"
+                                "detail";
+    }
+
+    .detail-autor-header-detail {
+        grid-template-columns: unset;
+        grid-template-areas:    "aoe"
+                                "mat-info";
+    }
+    .detail-info, .non-mobile{
+        display: none;
+    }
+
+    .info-button button {
+        display: block;
+    }
+}
+
+.detail-element {
+    display: table-cell;
+}
+
+.material-detail-grid .detail-snapshot {
+    grid-area: snapshot;
+}
+
+.material-detail-grid .normal-cover {
+   /* background: url('/wp-content/themes/rw_materialpool-blocksy-theme/assets/material-hintergund.jpg'); */
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    background-color: rgba(0,115, 170,0.15);
+
+}
+
+.material-detail-grid .normal-cover img {
+    width: 60%;
+    margin: 20px 0;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 3px solid #fff;
+    box-shadow: 2px 2px 12px 2px rgba(0, 0, 0, 0.8);
+}
+
+.material-detail-grid .special-cover {
+    padding: 0;
+    margin: 30px 0 50px;
+}
+
+.material-detail-grid .detail-cover-source,
+.material-detail-grid .special-cover p,
+.autor-detail-grid .autor-image {
+    text-align: end;
+    font-style: italic;
+    font-size: small;
+
+}
+
+.material-detail-grid .detail-snapshot-footer {
+    margin-top: 20px;
+}
+
+.material-detail-grid .detail-origin {
+    grid-area: origin;
+}
+
+.material-detail-grid .detail-origin, .material-detail-grid .detail-meta {
+
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-organisation {
+    text-align: center;
+    max-height: 200px;
+    background: #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.detail-herkunft-organisation .materialpool-template-material-organisation {
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-organisation .materialpool-template-material-organisation-logo {
+    max-height: 100px;
+    width: fit-content;
+    background-position: center;
+    margin: auto;
+}
+
+.detail-herkunft-organisation .materialpool-template-material-organisation-logo img {
+    max-height: 100px;
+
+}
+
+.material-detail-grid .detail-origin .detail-herkunft-author,
+.organisation-detail-grid .organisation-author .detail-organisation-author {
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.detail-herkunft-author .detail-herkunft-single-author {
+}
+
+.detail-herkunft-author .materialpool-template-material-autor-logo,
+.detail-organisation-author .materialpool-template-material-autor-logo {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-size: cover;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.detail-origin .detail-parent {
+    background: #ddd;
+    padding: 10px 0;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.material-detail-grid .detail-short-desc {
+    font-size: large;
+}
+
+.material-detail-grid .detail-desc {
+    grid-area: desc;
+}
+
+.material-detail-grid .detail-desc .description {
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.detail-desc .cta-button , .detail-organisation-header .cta-button {
+    width: 49%;
+}
+
+.material-detail-grid .detail-desc .description-footer {
+    text-align: end;
+    font-style: italic;
+    font-size: small;
+}
+
+.material-detail-grid .detail-meta {
+    grid-area: meta;
+    /*    width: min-content; */
+}
+
+.material-detail-grid .detail-links {
+    grid-area: links;
+}
+
+.material-detail-grid .detail-children {
+    grid-area: children;
+}
+
+
+.detail-autor-header, .detail-organisation-header {
+    grid-area: header;
+    border-radius: 15px;
+    justify-items: center;
+}
+
+.detail-autor-header .autor-cover {
+    grid-area: cover;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.detail-autor-header .detail-autor-header-detail {
+    grid-area: detail;
+    width: 100%;
+    text-align: center;
+}
+
+.detail-autor-header-aoe {
+    grid-area: aoe;
+}
+
+
+.detail-autor-organisation .materialpool-template-material-organisation-logo {
+    max-height: 200px;
+    background-position: center;
+}
+
+.detail-autor-header-material-info {
+    grid-area: mat-info;
+}
+
+.detail-autor-spacer {
+    margin: 40px 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.accent {
+    background: #999999;
+    border-radius: 15px;
+}
+
+.detail-autor-badge {
+    margin: auto;
+}
+
+.detail-autor-image {
+    margin-top: 40px;
+    display: block;
+    max-width: 200px;
+}
+.detail-autor-image img{
+  border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+
+.detail-autor-search, .detail-organisation-search {
+    grid-area: search;
+}
+
+.detail-autor-search .entry-title, .detail-organisation-search .entry-title {
+    text-align: center;
+}
+
+.detail-autor-material, .detail-organisation-material {
+    grid-area: material;
+}
+
+
+.organisation-info {
+    grid-area: cover;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.organisation-author {
+    grid-area: detail;
+    margin: 20px 0;
+}
+
+.detail-organisation-author{
+    height: 200px;
+    overflow: hidden;
+}
+
+.organisation-detail-grid .organisation-cover {
+    text-align: center;
+}
+
+.organisation-cover img {
+    max-height: 200px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 150px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext img {
+    width: 100%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

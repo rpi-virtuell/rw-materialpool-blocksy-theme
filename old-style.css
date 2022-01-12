@@ -47,14 +47,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     line-height: normal;
-}
-
-body.page-template-default h1.entry-title {
-    font-family: 'Cairo', 'Open Sans', sans-serifbody;
-    line-height: normal;
     font-weight: 300 !important;
     color: #333 !important;
-    font-size: 2rem !important;
     text-transform: initial !important;
 }
 
@@ -332,25 +326,25 @@ div.organisation-left .image-alt, .autor-left .image-alt {
 }
 
 .author-badge.grau {
-    background: url('/wp-content/themes/rw-materialpool-theme/assets/grau.png') no-repeat;
+    background: url('/wp-content/themes/rw-materialpool-theme/assets/grau.png') no-repeat center;
     background-size: contain;
 
 }
 
 .author-badge.gruen {
-    background: url('/wp-content/themes/rw-materialpool-theme/assets/gruen.png') no-repeat;
+    background: url('/wp-content/themes/rw-materialpool-theme/assets/gruen.png') no-repeat center;
     background-size: contain;
 
 }
 
 .author-badge.gold {
-    background: url('/wp-content/themes/rw-materialpool-theme/assets/gold.png') no-repeat;
+    background: url('/wp-content/themes/rw-materialpool-theme/assets/gold.png') no-repeat center;
     background-size: contain;
 
 }
 
 .autor-content {
-margin-top: 15px !important;
+    margin-top: 15px !important;
 }
 
 .autor-right {
@@ -384,17 +378,6 @@ div.material-column h1,
 
 .material-detail-right {
     flex: 0 22%;
-}
-
-.material-detail-content {
-    flex: 1;
-    padding: 0 20px;
-    overflow: hidden;
-}
-
-.material-detail-content-viewer {
-    flex: 1;
-    padding: 0 20px 0 0;
 }
 
 .material-detail-footer {
@@ -497,11 +480,8 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
     font-weight: 400;
 }
 
-.viewerjsurlmeta {
-    margin: -30px 5px 25px;
-}
 
-.material-column a.cta-button {
+.cta-button {
     background-color: #2E89C1;
     border: none;
     padding: 4px 20px;
@@ -511,7 +491,7 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
     font-size: 16px;
     border-radius: 5px;
     margin-top: 5px;
-    color: white;
+    color: white !important;
     width: 100%;
 }
 
@@ -814,7 +794,7 @@ div.material-suche .facetwp-btn:hover {
     color: #2E89C1;
 }
 
-.page-template-suche .facet-treffer-content {
+.facet-treffer-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -1132,7 +1112,7 @@ footer, footer a, footer h2.widget-title {
 }
 
 .author-picture {
- display: block;
+    display: block;
     margin: auto;
 }
 
@@ -1141,7 +1121,6 @@ footer, footer a, footer h2.widget-title {
     width: 100px;
     object-fit: cover;
     object-position: center;
-    border-radius: 50%;
 }
 
 .author-info {

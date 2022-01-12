@@ -1,4 +1,4 @@
-<div class="material-grid-layout" data-cards="boxed">
+<div class="material-grid-layout" data-layout="enhanced-grid" data-cards="boxed">
     <?php
     while (have_posts()) : the_post(); ?>
         <?php
@@ -72,7 +72,7 @@
                         </div>
                         <div class="author">
                             <?php
-                            if (!empty(Materialpool_Material::get_autor())) {
+                            if (Materialpool_Material::has_autor()) {
                                 ?>
                                 <img class="taxonomy-icon"
                                      src="<?php echo get_stylesheet_directory_uri() . "/assets/003-user.svg" ?> "
@@ -111,10 +111,8 @@
 
                             <?php } ?>
                         </div>
-                        <div style="">
-                            <div class="material-rating">
+                        <div style="text-align: end">
                                 <?php echo Materialpool_Material::rating_facet_html(); ?>
-                            </div>
                         </div>
                         <?php if (is_user_logged_in()) { ?>
                             <div style="float: right;">
@@ -141,3 +139,17 @@
         </article>
     <?php endwhile; ?>
 </div>
+
+<script>
+    materialcount = <?php echo count(wp_count_posts()->publish)?>;
+    let materialgridlayout = jQuery('.material-grid-layout').style;
+    switch (materialcount)
+    case 1:
+    case 2:
+        materialgridlayout.add('grid-template-columns','1fr 1fr');
+        break;
+    case 4:
+    case 5:
+        materialgridlayout.add('grid-template-columns','repeat());
+        break;
+</script>
