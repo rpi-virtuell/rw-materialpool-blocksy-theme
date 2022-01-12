@@ -6,7 +6,7 @@
  * Text Domain: blocksy
  */
 
-#less-button{
+#less-button {
     display: none;
 }
 
@@ -44,6 +44,7 @@
     text-align: center;
     margin-top: 20px;
 }
+
 .info-button button {
     background-color: grey;
     width: 30px;
@@ -110,7 +111,8 @@
         grid-template-areas:    "aoe"
                                 "mat-info";
     }
-    .detail-info, .non-mobile{
+
+    .detail-info, .non-mobile {
         display: none;
     }
 
@@ -128,12 +130,12 @@
 }
 
 .material-detail-grid .normal-cover {
-   /* background: url('/wp-content/themes/rw_materialpool-blocksy-theme/assets/material-hintergund.jpg'); */
+    /* background: url('/wp-content/themes/rw_materialpool-blocksy-theme/assets/material-hintergund.jpg'); */
     border-radius: 10px;
     background-size: cover;
     background-position: center;
     text-align: center;
-    background-color: rgba(0,115, 170,0.15);
+    background-color: rgba(0, 115, 170, 0.15);
 
 }
 
@@ -240,7 +242,7 @@
     margin-bottom: 20px;
 }
 
-.detail-desc .cta-button , .detail-organisation-header .cta-button {
+.detail-desc .cta-button, .detail-organisation-header .cta-button {
     width: 49%;
 }
 
@@ -318,8 +320,9 @@
     display: block;
     max-width: 200px;
 }
-.detail-autor-image img{
-  border-radius: 50%;
+
+.detail-autor-image img {
+    border-radius: 50%;
     height: 200px;
     width: 200px;
     object-fit: cover;
@@ -350,7 +353,7 @@
     margin: 20px 0;
 }
 
-.detail-organisation-author{
+.detail-organisation-author {
     height: 200px;
     overflow: hidden;
 }

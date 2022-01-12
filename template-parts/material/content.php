@@ -27,7 +27,9 @@
                 if (!Materialpool_Material::is_special() && !Materialpool_Material::is_viewer() && !Materialpool_Material::is_playable()) {
                     ?>
                     <div class="detail-cover normal-cover"> <?php
+                        echo "<a href='" . Materialpool_Material::get_url()  ."'>";
                         echo Materialpool_Material::cover_facet_html_noallign();
+                        echo "</a>";
                         if (Materialpool_Material::get_picture_source() != '') {
                             if (Materialpool_Material::get_picture_url() != '') {
                                 echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . Materialpool_Material::get_picture_source() . "</a>";
