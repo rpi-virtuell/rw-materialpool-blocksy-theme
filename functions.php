@@ -238,13 +238,16 @@ function catch_thema_image()
 
 add_filter('facetwp_facet_html', 'my_facetwp_facet_html', 10, 2);
 
-/*add accordeons to [accordion].<h3>..[/accordion] shortcode*/
+/*add accordeons to [accordion].<h3>..[/accordion] shortcode
+  [accordion active="1"].<h3>..[/accordion]
+*/
 
 function rw_add_accordion($atts, $content){
 
     $description = str_replace('</h3>','</h3><div>',do_shortcode($content));
     $description = str_replace('<h3>','</div><h3>',$description);
 
+    $active = isset($atts["active"])?$atts["active"]:'false';
 
     $html = '<div class="accordion"><div>'.$description.'</div></div>';
     $html = str_replace('<div></div>','',$html);
@@ -254,7 +257,7 @@ function rw_add_accordion($atts, $content){
                     jQuery( '.accordion' ).accordion({
                       collapsible: true,
                       heightStyle: 'content',
-                      active:false,
+                      active: ".$active.",
                       header:'h3'
                     });
                   } );

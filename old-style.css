@@ -794,7 +794,7 @@ div.material-suche .facetwp-btn:hover {
     color: #2E89C1;
 }
 
-.page-template-suche .facet-treffer-content {
+.facet-treffer-content {
     position: relative;
     display: flex;
     flex-direction: column;

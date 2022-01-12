@@ -1,5 +1,6 @@
 <div class="material-grid-layout" data-cards="boxed">
     <?php
+
     while (have_posts()) : the_post(); ?>
         <?php
         if (true || false === ($transient = get_transient('facet_autor_entry-' . $post->ID))) {
@@ -72,7 +73,7 @@
                         </div>
                         <div class="author">
                             <?php
-                            if (!empty(Materialpool_Material::get_autor())) {
+                            if (Materialpool_Material::has_autor()) {
                                 ?>
                                 <img class="taxonomy-icon"
                                      src="<?php echo get_stylesheet_directory_uri() . "/assets/003-user.svg" ?> "
@@ -111,10 +112,8 @@
 
                             <?php } ?>
                         </div>
-                        <div style="">
-                            <div class="material-rating">
-                                <?php echo Materialpool_Material::rating_facet_html(); ?>
-                            </div>
+                        <div style="text-align: end">
+                            <?php echo Materialpool_Material::rating_facet_html(); ?>
                         </div>
                         <?php if (is_user_logged_in()) { ?>
                             <div style="float: right;">

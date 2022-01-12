@@ -179,11 +179,13 @@
         $('#more-button').on('click', function () {
             $('#description-short').hide(0, function () {
                 $('#description-more').slideDown(700);
+                $('#less-button').show();
             });
         });
         $('#less-button').on('click', function () {
             $('#description-more').slideUp(700);
             $('#description-short').show(0);
+            $('#less-button').hide();
         });
     })
 </script>

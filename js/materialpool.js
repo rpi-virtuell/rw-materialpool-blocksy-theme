@@ -61,10 +61,10 @@ jQuery(document).ready(function ($) {
 	$('.has-header-image.twentyseventeen-front-page .custom-header').animate({
 		'height': '31vh'
 	}, 2000, function(){});
-	
+
 	/***************/
-	
-	
+
+
     $("#thema-toc").toc({content: "#thema-description", headings: "h2"});
 
     $("#thema-toc li a").on('click', function () {
@@ -200,5 +200,15 @@ jQuery(document).ready(function ($) {
         jQuery('.sidebar').toggle({'duration':1000});
     })
 
+    $(".dropdown-toggle").click(function(){
+        // Hide other dropdown menus in case of multiple dropdowns
+        $(".dropdown-menu").not($(this).next()).slideUp("fast");
 
+        // Toggle the current dropdown menu
+        $(this).next(".dropdown-menu").slideToggle("fast");
+    });
+
+    jQuery('.info-button').on('click', function(){
+        jQuery('.detail-info').toggle({'duration':1000});
+    })
 });
