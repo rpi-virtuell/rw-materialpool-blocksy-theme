@@ -849,7 +849,7 @@ div.material-suche .facetwp-btn:hover {
 }
 
 .facet-treffer-content h2 a {
-    color: #2E89C1;
+    /*color: #2E89C1;*/
     text-decoration: none;
     box-shadow: none;
     display: table-cell;
@@ -857,7 +857,7 @@ div.material-suche .facetwp-btn:hover {
 }
 
 .facet-treffer-content h2 a:hover {
-    color: #2E89C1;
+    /*color: #2E89C1;*/
     box-shadow: none;
 }
 
