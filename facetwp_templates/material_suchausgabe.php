@@ -1,4 +1,4 @@
-<div class="material-grid-layout" data-cards="boxed">
+<div class="material-grid-layout" data-layout="enhanced-grid"  data-cards="boxed">
     <?php while (have_posts()) :
         the_post(); ?>
 
@@ -36,10 +36,8 @@
                             </h2>
                             <?php if (!empty(Materialpool_Material::get_cover())) { ?>
                             <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
-
-                                    <img src="<?php echo Materialpool_Material::get_cover() ?>" alt="">
+                                    <img src="<?php echo Materialpool_Material::get_cover() ?>" onerror="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg" ?>'" alt="">
                                     <span class="ct-ratio" style="padding-bottom: 75%"></span>
-
                             </a>
                             <?php } ?>
                             <p class="material-picture-source">
@@ -148,10 +146,8 @@
                             class="fas fa-ellipsis-v"> </i></span>
                                     </div>
                                 <?php } ?>
-
                             </div>
                         </div>
-
                     </div>
                 </article>
 
@@ -255,66 +251,33 @@
     <script>
 
         (function ($) {
-
             window.fwp_is_paging = false;
-
-
             $(document).on('facetwp-refresh', function () {
-
                 if (!window.fwp_is_paging) {
-
                     window.fwp_page = 1;
-
                     FWP.extras.per_page = 'default';
-
                 }
-
-
                 window.fwp_is_paging = false;
-
             });
-
-
             $(document).on('facetwp-loaded', function () {
-
                 window.fwp_total_rows = FWP.settings.pager.total_rows;
-
-
                 if (!FWP.loaded) {
-
                     window.fwp_default_per_page = FWP.settings.pager.per_page;
-
-
                     $(window).scroll(function () {
-
                         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-
                             var rows_loaded = (window.fwp_page * window.fwp_default_per_page);
-
                             if (rows_loaded < window.fwp_total_rows) {
-
                                 //console.log(rows_loaded + ' of ' + window.fwp_total_rows + ' rows');
-
                                 window.fwp_page++;
-
                                 window.fwp_is_paging = true;
-
                                 FWP.extras.per_page = (window.fwp_page * window.fwp_default_per_page);
-
                                 FWP.soft_refresh = true;
-
                                 FWP.refresh();
-
                             }
-
                         }
-
                     });
-
                 }
-
             });
-
         })(jQuery);
 
     </script>

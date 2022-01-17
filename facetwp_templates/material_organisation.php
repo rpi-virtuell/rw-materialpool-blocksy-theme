@@ -1,4 +1,4 @@
-<div class="material-grid-layout" data-cards="boxed">
+<div class="material-grid-layout" data-layout="enhanced-grid"  data-cards="boxed">
     <?php
 
     while (have_posts()) : the_post(); ?>

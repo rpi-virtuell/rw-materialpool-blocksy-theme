@@ -140,16 +140,3 @@
     <?php endwhile; ?>
 </div>
 
-<script>
-    materialcount = <?php echo count(wp_count_posts()->publish)?>;
-    let materialgridlayout = jQuery('.material-grid-layout').style;
-    switch (materialcount)
-    case 1:
-    case 2:
-        materialgridlayout.add('grid-template-columns','1fr 1fr');
-        break;
-    case 4:
-    case 5:
-        materialgridlayout.add('grid-template-columns','repeat());
-        break;
-</script>
