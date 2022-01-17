@@ -27,7 +27,7 @@ class ThemeCore
             @error_reporting(-1);
         }
 
-        get_header($name,$args);
+	    get_header($name,$args);
         if (have_posts()) {
             the_post();
         }
