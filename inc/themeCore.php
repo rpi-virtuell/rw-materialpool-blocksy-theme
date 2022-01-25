@@ -20,14 +20,14 @@ class ThemeCore
      *
      *
      */
-    static function draw_page_content($content, $name = null, $args = array())
+    static function draw_page_content($content, $headerName = null, $args = array())
     {
 
         if (WP_DEBUG) {
             @error_reporting(-1);
         }
 
-	    get_header($name,$args);
+	    get_header($headerName,$args);
         if (have_posts()) {
             the_post();
         }

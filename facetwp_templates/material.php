@@ -1,10 +1,10 @@
-<div class="material-grid-layout" data-cards="boxed">
+<div class="material-grid-layout"<?php if (true) echo'data-layout="enhanced-grid"';  ?> data-cards="boxed">
     <?php
     while (have_posts()) : the_post(); ?>
         <?php
-        ob_start();
-        ?>
-        <article class="entry-card<?php echo (Materialpool_Material::is_alpika()) ? ' alpika' : ''; ?><?php echo (Materialpool_Material::is_special()) ? ' special' : ''; ?>">
+            ob_start();
+            ?>
+            <article class="entry-card<?php echo (Materialpool_Material::is_alpika()) ? ' alpika' : ''; ?><?php echo (Materialpool_Material::is_special()) ? ' special' : ''; ?>">
             <div class="facet-treffer">
                 <div class="facet-treffer-content">
                     <h2>
@@ -133,7 +133,7 @@
             ob_end_clean();
             echo $buffer;
             set_transient('facet_autor_entry-' . $post->ID, $buffer);
-            ?>
+        ?>
         </article>
     <?php endwhile; ?>
 </div>

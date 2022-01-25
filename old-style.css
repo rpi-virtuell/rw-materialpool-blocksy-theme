@@ -99,38 +99,12 @@ span.thema-title a {
 
 
 /* front-page  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-.home .material-results {
-
-    padding: 0;
-    /*
-        margin-bottom:50px;
-        -moz-column-gap: 1.5em;
-        -webkit-column-gap: 1.5em;
-        column-gap: 1.5em;
-    */
-    text-align: center;
-    max-height: 100%;
-    overflow: hidden;
-}
 
 .home .material-results img.materialpool-template-material-picture-facet {
     padding: 10px;
     width: 100%;
     max-width: unset;
 
-}
-
-.home .facet-treffer {
-    border: 1px solid #ddd;
-    display: inline-block;
-    background: #fff;
-    padding: 1em;
-    margin: 0 0 1.5em;
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-shadow: 2px 2px 4px 0 #ccc;
 }
 
 .material-suche .facetwp-icon {
@@ -165,7 +139,7 @@ span.thema-title a {
     font-size: .85em;
 }
 
-.home .facetwp-template, .single-themenseite .material-results {
+.single-themenseite .material-results {
     display: grid;
     grid-template-rows: auto;
     grid-gap: 10px;
@@ -297,7 +271,6 @@ div.organisation-left .image-alt, .autor-left .image-alt {
 .entry-content.autor {
     display: flex;
     flex-flow: row;
-    min-width: 400px;
 }
 
 .autor-left {
@@ -1103,8 +1076,8 @@ footer, footer a, footer h2.widget-title {
 
 .post-type-archive-autor .facet-treffer {
     background: #fff;
-    padding: 5px 0 20px 5px;
     border-radius: 3px;
+    box-shadow: 2px 1px 7px rgba(0, 0, 0, 0.2) !important;
 }
 
 .autor-archiv {
@@ -1113,18 +1086,19 @@ footer, footer a, footer h2.widget-title {
 
 .author-picture {
     display: block;
-    margin: auto;
+    height: 100%;
+    width: 100px;
 }
 
 .author-picture img {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     object-position: center;
 }
 
 .author-info {
-    margin-left: 20px;
+    margin: 10px 0 10px 20px;
     height: 100%;
     width: 60%;
 }

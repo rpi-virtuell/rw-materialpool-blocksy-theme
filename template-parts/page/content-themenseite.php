@@ -65,7 +65,7 @@
                                 <span class="ct-ratio" style="padding-bottom: 75%"></span>
                             </a>
                             <p class="thema-excerpt">
-                                <?php the_excerpt(); ?>
+                                <?php echo wp_trim_words(get_the_excerpt(), 50);  ?>
                             </p>
                             <div class="clear"></div>
                             </div>

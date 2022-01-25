@@ -15,6 +15,10 @@
     width: 100%;
 }
 
+.mobile {
+    display: none;
+}
+
 .material-grid-layout {
     display: grid;
     align-content: space-around;
@@ -31,9 +35,12 @@
     box-shadow: 2px 1px 12px 2px aliceblue;
     padding: 0 20px 0 20px;
 }
-
+.material-filter-button{
+    width: fit-content;
+}
 .material-filter-button button {
-    background-color: #D95821;
+    color: white;
+    background-color: #e4301c;
     width: 110px;
     padding: 3px 20px;
     border-radius: 3px;
@@ -43,6 +50,15 @@
     font-size: 12px;
     text-align: center;
     margin-top: 20px;
+}
+
+.facetwp-selections li{
+    background-color: #0072aa;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 5px;
 }
 
 .info-button button {
@@ -69,24 +85,62 @@
 
 .autor-detail-grid, .organisation-detail-grid {
     display: grid;
-    grid-template-areas:    "header"
-                            "search"
+    grid-template-areas:    "search"
                             "material";
+}
+
+.organisation-detail-grid h1 {
+    text-align: center;
 }
 
 .detail-organisation-header, .detail-autor-header {
     display: grid;
-    grid-template-areas:    "cover detail";
-    grid-gap: 10px;
-    grid-template-columns: 50% 50%;
+    grid-template-areas:    "cover name" "tabdetail tabdetail" "tabs tabs";
+    grid-template-columns: 30% 70%;
+    background-image: linear-gradient(to top left, white, #0072aa, #388BC2, white);
+    text-align: center;
+    color: white;
 }
 
-.detail-autor-header-detail {
-    display: grid;
-    grid-template-areas: "aoe mat-info";
-    grid-template-columns: 50% 50%;
+.detail-autor-header a, .detail-organisation-header a {
+    color: white;
 }
 
+.detail-autor-header a:hover, .detail-organisation-header a:hover {
+    color: #e4301c;
+}
+
+.autor-header-tabs, .organisation-header-tabs {
+    grid-area: tabs;
+    display: flex;
+    background: #0072aa;
+    border-top: 2px solid #2872fa;
+    border-bottom: 2px solid #2872fa;
+
+    font-size: 1.2em;
+
+    box-shadow: 2px -27px 30px rgba(250, 250, 250, 0.3);
+
+}
+
+.header-tab {
+    margin: 2px 10px;
+    background: unset;
+    color: white;
+    border-top: 2px solid #0072aa;
+}
+
+.header-tab:hover {
+    border-top: 2px solid white
+}
+
+.detail-autor-meta.desktop {
+    border-top: 2px solid #0072aa;
+    margin: 5px 10px;
+    color: lightgrey;
+    width: 100%;
+    text-align: right;
+}
 
 @media (max-width: 800px) {
     .material-detail-grid {
@@ -98,26 +152,30 @@
                                 "children";
 
     }
-
-    .detail-organisation-header, .detail-autor-header {
-
-        grid-template-columns: unset;
-        grid-template-areas:    "cover"
-                                "detail";
+    
+    .organisation-author .detail-organisation-author {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
     }
 
-    .detail-autor-header-detail {
-        grid-template-columns: unset;
-        grid-template-areas:    "aoe"
-                                "mat-info";
-    }
-
-    .detail-info, .non-mobile {
+    .desktop {
         display: none;
+    }
+
+    .mobile {
+        display: unset;
     }
 
     .info-button button {
         display: block;
+    }
+
+    .autor-name h4, .organisation-name h4 {
+        font-size: 1.5em !important;
+    }
+    .detail-organisation-header, .detail-autor-header {
+        grid-template-columns: unset;
     }
 }
 
@@ -171,10 +229,6 @@
     grid-area: origin;
 }
 
-.material-detail-grid .detail-origin, .material-detail-grid .detail-meta {
-
-}
-
 .material-detail-grid .detail-origin .detail-herkunft-organisation {
     text-align: center;
     max-height: 200px;
@@ -200,16 +254,17 @@
 }
 
 .material-detail-grid .detail-origin .detail-herkunft-author,
-.organisation-detail-grid .organisation-author .detail-organisation-author {
+.organisation-author .detail-organisation-author {
     align-items: center;
     text-align: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
 }
 
-.detail-herkunft-author .detail-herkunft-single-author {
+.detail-herkunft-single-author {
+    display: inline-table;
+    margin: 0 20px;
+    min-width: 130px;
 }
+
 
 .detail-herkunft-author .materialpool-template-material-autor-logo,
 .detail-organisation-author .materialpool-template-material-autor-logo {
@@ -265,18 +320,48 @@
     grid-area: children;
 }
 
-
-.detail-autor-header, .detail-organisation-header {
-    grid-area: header;
-    border-radius: 15px;
-    justify-items: center;
-}
-
-.detail-autor-header .autor-cover {
+.detail-autor-header .autor-cover, .detail-organisation-header .organisation-cover {
     grid-area: cover;
     display: flex;
+    align-items: center;
     width: 100%;
-    justify-content: center;
+    height: 200px;
+    margin: 10px 0;
+}
+
+.autor-cover-container, .organisation-cover-container {
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+}
+
+.autor-cover img {
+    height: 200px;
+}
+
+.autor-cover a {
+    display: block;
+    width: 100%;
+    margin-top: -20px;
+}
+
+.detail-autor-header .autor-name, .detail-organisation-header .organisation-name {
+    grid-area: name;
+    margin: auto 5px;
+    text-align: start;
+}
+
+.autor-name h4, .organisation-name h4 {
+    font-size: 2.5em;
+    color: white !important;
+    margin: unset;
+    font-weight: normal !important;
+}
+
+.autor-award {
+    width: 36px;
+    height: 36px;
+    filter: invert();
 }
 
 .detail-autor-header .detail-autor-header-detail {
@@ -285,18 +370,19 @@
     text-align: center;
 }
 
-.detail-autor-header-aoe {
-    grid-area: aoe;
+.detail-autor-organisation, .organisation-author {
+    grid-area: tabdetail;
+    display: none;
 }
 
+.header-tab.active {
+    border-top: 2px solid #e4301c;
+}
 
 .detail-autor-organisation .materialpool-template-material-organisation-logo {
-    max-height: 200px;
+    width: 200px;
+    margin: auto;
     background-position: center;
-}
-
-.detail-autor-header-material-info {
-    grid-area: mat-info;
 }
 
 .detail-autor-spacer {
@@ -312,22 +398,13 @@
 }
 
 .detail-autor-badge {
-    margin: auto;
+    margin: 5px;
+    font-size: medium;
 }
 
-.detail-autor-image {
-    margin-top: 40px;
-    display: block;
-    max-width: 200px;
+.tooltip-badge {
+    border: unset !important;
 }
-
-.detail-autor-image img {
-    border-radius: 50%;
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-}
-
 
 .detail-autor-search, .detail-organisation-search {
     grid-area: search;
@@ -343,23 +420,19 @@
 
 
 .organisation-info {
+    width: 100%;
     grid-area: cover;
     margin: 20px 0;
     text-align: center;
-}
-
-.organisation-author {
-    grid-area: detail;
-    margin: 20px 0;
-}
-
-.detail-organisation-author {
-    height: 200px;
-    overflow: hidden;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
 }
 
 .organisation-detail-grid .organisation-cover {
     text-align: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .organisation-cover img {
@@ -384,7 +457,7 @@
     z-index: 1;
     top: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -75px;
     opacity: 0;
     transition: opacity 0.3s;
 }

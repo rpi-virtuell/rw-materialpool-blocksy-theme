@@ -200,14 +200,23 @@ jQuery(document).ready(function ($) {
     jQuery('.material-filter-button').on('click', function () {
         jQuery('.sidebar').toggle({'duration': 1000});
     })
-    if (jQuery('.sidebar').is(":visible")) {
-        $('.material-grid-layout').on('click', function () {
-            jQuery('.sidebar').toggle({'duration': 1000})
-        })
-    }
+
+
+    jQuery(document).on('click', function (e) {
+        var sidebar = $('.sidebar');
+        var filterButton = $('.material-filter-button');
+        var filterSelections = $('.facetwp-selections');
+        if (sidebar.is(':visible')) {
+            if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0
+                && !filterButton.is(e.target) && filterButton.has(e.target).length === 0
+                && !filterSelections.is(e.target) && filterSelections.has(e.target).length === 0) {
+                jQuery('.sidebar').toggle({'duration': 1000})
+            }
+        }
+    })
 
 
     jQuery('.info-button').on('click', function () {
-        jQuery('.detail-info').toggle({'duration': 1000});
+        jQuery('.detail-info').slidetoggle(1000);
     })
 });

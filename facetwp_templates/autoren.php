@@ -2,9 +2,8 @@
     <?php while (have_posts()) : the_post(); ?>
         <div class="entry-content autor facet-treffer">
             <div class="autor-content autor-archiv">
-
                 <div class="author-picture">
-                    <a href="<?php echo get_permalink(); ?>">
+                    <a href="<?php  echo get_permalink() ?>">
                         <?php if (!empty(Materialpool_Autor::get_picture())) { ?>
                             <img src="<?php echo Materialpool_Autor::get_picture(); ?>"
                                  onError="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/Portrait_placeholder.png" ?>'">

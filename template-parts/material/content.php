@@ -28,7 +28,7 @@
                     ?>
                     <div class="detail-cover normal-cover"> <?php
                         echo "<a href='" . Materialpool_Material::get_url()  ."'>";
-                        echo Materialpool_Material::cover_facet_html_noallign();
+                        echo Materialpool_Material::cover_facet_html_noallign(null, get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg");
                         echo "</a>";
                         if (Materialpool_Material::get_picture_source() != '') {
                             if (Materialpool_Material::get_picture_url() != '') {

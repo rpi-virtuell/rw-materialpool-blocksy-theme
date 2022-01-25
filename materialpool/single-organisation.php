@@ -22,4 +22,4 @@ ob_start();
                 endwhile; // End of the loop.
 
 $content = ob_get_clean();
-ThemeCore::draw_page_content($content);
+ThemeCore::draw_page_content($content, 'organisation');

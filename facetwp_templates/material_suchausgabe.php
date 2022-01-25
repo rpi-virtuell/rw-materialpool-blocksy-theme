@@ -1,4 +1,4 @@
-<div class="material-grid-layout" data-layout="enhanced-grid"  data-cards="boxed">
+<div class="material-grid-layout" data-cards="boxed">
     <?php while (have_posts()) :
         the_post(); ?>
 
@@ -18,7 +18,7 @@
                                 <span class="ct-ratio" style="padding-bottom: 75%"></span>
                             </a>
                             <p class="thema-excerpt">
-                                <?php the_excerpt(); ?>
+                                <?php echo wp_trim_words(get_the_excerpt(), 50); ?>
                             </p>
                         </div>
                     </div>
@@ -35,10 +35,12 @@
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
                             <?php if (!empty(Materialpool_Material::get_cover())) { ?>
-                            <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
-                                    <img src="<?php echo Materialpool_Material::get_cover() ?>" onerror="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg" ?>'" alt="">
+                                <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
+                                    <img src="<?php echo Materialpool_Material::get_cover() ?>"
+                                         onerror="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg" ?>'"
+                                         alt="">
                                     <span class="ct-ratio" style="padding-bottom: 75%"></span>
-                            </a>
+                                </a>
                             <?php } ?>
                             <p class="material-picture-source">
                                 <?php
