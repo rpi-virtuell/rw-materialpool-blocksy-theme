@@ -1,11 +1,10 @@
-<div class="material-grid-layout"  data-cards="boxed">
+<div class="material-grid-layout"<?php if (true) echo'data-layout="enhanced-grid"';  ?> data-cards="boxed">
     <?php
     while (have_posts()) : the_post(); ?>
         <?php
-        if (true || false === ($transient = get_transient('facet_autor_entry-' . $post->ID))) {
-            ob_start();
-            ?>
-            <article class="entry-card">
+        ob_start();
+        ?>
+        <article class="entry-card<?php echo (Materialpool_Material::is_alpika()) ? ' alpika' : ''; ?><?php echo (Materialpool_Material::is_special()) ? ' special' : ''; ?>">
             <div class="facet-treffer">
                 <div class="facet-treffer-content">
                     <h2>
@@ -14,7 +13,9 @@
 
                     <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
                         <?php if (!empty(Materialpool_Material::get_cover())) { ?>
-                            <img src="<?php echo Materialpool_Material::get_cover() ?>" alt="">
+                            <img src="<?php echo Materialpool_Material::get_cover() ?>"
+                                 onerror="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg" ?>'"
+                                 alt="">
                             <span class="ct-ratio" style="padding-bottom: 75%"></span>
                         <?php } ?>
                     </a>
@@ -127,20 +128,15 @@
                 </div>
             </div>
 
-
-
             <?php
             $buffer = ob_get_contents();
             ob_end_clean();
             echo $buffer;
             set_transient('facet_autor_entry-' . $post->ID, $buffer);
-        } else {
-            echo $transient;
-        }
-        ?>
+            ?>
         </article>
-    <?php endwhile; ?>
+    <?php endwhile;
+
+    wp_reset_query();?>
 </div>
-
-
 

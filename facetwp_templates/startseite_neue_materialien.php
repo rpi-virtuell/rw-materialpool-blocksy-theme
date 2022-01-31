@@ -1,4 +1,4 @@
-<div class="material-grid-layout" data-cards="boxed">
+<div class="material-grid-layout"<?php if (true) echo'data-layout="enhanced-grid"';  ?> data-cards="boxed">
     <?php
     while (have_posts()) : the_post(); ?>
         <?php
@@ -135,6 +135,9 @@
             set_transient('facet_autor_entry-' . $post->ID, $buffer);
             ?>
         </article>
-    <?php endwhile; ?>
+    <?php endwhile;
+
+    wp_reset_query();
+    ?>
 </div>
 

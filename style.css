@@ -85,12 +85,17 @@
 
 .autor-detail-grid, .organisation-detail-grid {
     display: grid;
-    grid-template-areas:    "search"
+    grid-template-areas:    "title"
+                            "search"
                             "material";
 }
 
 .organisation-detail-grid h1 {
     text-align: center;
+}
+
+.organisation-title{
+    grid-area: title;
 }
 
 .detail-organisation-header, .detail-autor-header {
@@ -333,6 +338,8 @@
     height: fit-content;
     width: fit-content;
     margin: auto;
+    box-shadow: 2px 2px 11px black;
+    border: 1px solid #ccc;
 }
 
 .autor-cover img {
@@ -461,9 +468,11 @@
     opacity: 0;
     transition: opacity 0.3s;
 }
-
-.tooltip .tooltiptext img {
-    width: 100%;
+.alpikatooltip{
+    width: 250px !important;
+    margin-left: -125px !important;
+    background: linear-gradient(184deg, rgba(59,67,71,1) 1%, rgba(135,175,216,1) 70%, rgba(153,212,249,1) 100%) !important;
+    box-shadow: 7px 6px 13px #0000008a;
 }
 
 .tooltip .tooltiptext::after {

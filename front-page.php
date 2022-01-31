@@ -26,7 +26,8 @@ if ($show_title):
         </div>
     </div>
 <?php
-endif;
+endif; ?>
+<?php
 $show_aktuell = get_field('show_aktuell');
 if ($show_aktuell == 1) {
     ?>
@@ -48,154 +49,8 @@ if ($show_aktuell == 1) {
                     'post__in' => $IDlistArr,
                     'post_type' => array('material'),
                 );
-                $my_query = new WP_Query($args); ?>
-                <div class="material-grid-layout" data-cards="boxed">
-                    <?php
-                    while ($my_query->have_posts()) : $my_query->the_post(); ?>
-                        <?php
-                        if (true || false === ($transient = get_transient('facet_autor_entry-' . $post->ID))) {
-                            ob_start();
-                            ?>
-                            <article class="entry-card">
-                            <div class="facet-treffer">
-                                <div class="facet-treffer-content">
-                                    <h2>
-                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                    </h2>
-
-                                    <a class="search-cover boundless-image" href="<?php the_permalink(); ?>"
-                                       tabindex="-1">
-                                        <?php if (!empty(Materialpool_Material::get_cover())) { ?>
-                                            <img src="<?php echo Materialpool_Material::get_cover() ?>" alt="">
-                                            <span class="ct-ratio" style="padding-bottom: 75%"></span>
-                                        <?php } ?>
-                                    </a>
-                                    <p class="material-picture-source">
-                                        <?php
-                                        if (Materialpool_Material::get_picture_source() != '') {
-                                            if (Materialpool_Material::get_picture_url() != '') {
-                                                echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . Materialpool_Material::get_picture_source() . "</a>";
-                                            } else {
-                                                echo "Bildquelle: " . Materialpool_Material::get_picture_source();
-                                            }
-                                        } else {
-                                            if (Materialpool_Material::get_picture_url() != '') {
-                                                $host = parse_url(Materialpool_Material::get_picture_url());
-
-                                                if ($host['host'])
-                                                    echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . $host['host'] . "</a>";
-                                            }
-                                        }
-                                        ?>
-                                    </p>
-                                    <p class="material-shortdescription"><?php Materialpool_Material::shortdescription(); ?></p>
-                                    <p class="material-desc"> <?php echo wp_trim_words(wp_strip_all_tags(Materialpool_Material::get_description())); ?> </p>
-
-                                    <div class="ct-ghost"></div>
-                                    <div style="clear: both;"></div>
-                                    <div class="taxonomien">
-                                        <div class="organisation">
-                                            <?php if (!empty(Materialpool_Material::get_organisation()[0])) {
-                                                ?>
-                                                <img class="taxonomy-icon"
-                                                     src="<?php echo get_stylesheet_directory_uri() . "/assets/006-institution.svg" ?> "
-                                                     alt="">
-                                                <?php
-                                                //echo Materialpool_Material::organisation_facet_html();
-                                                global $post;
-                                                $data = '';
-                                                $verweise = Materialpool_Material::get_organisation();
-                                                foreach ($verweise as $verweisID) {
-                                                    $verweis = get_post($verweisID, ARRAY_A);
-                                                    $url = get_permalink($verweis['ID']);
-                                                    if ($data != '') $data .= ', ';
-                                                    $data .= '<a href="' . $url . '" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-verweise') . '">' . $verweis['post_title'] . '</a>';
-
-                                                }
-                                                $organisation = apply_filters('materialpool_material_description_interim_organisation', get_metadata('post', $post->ID, 'material_organisation_interim', true));
-                                                if ($organisation != '') {
-                                                    if ($data != '') $data .= ', ';
-                                                    $data .= '<a class="' . apply_filters('materialpool-template-material-organisation', 'materialpool-template-material-organisation') . '">' . $organisation . '</a>';
-                                                }
-                                                echo $data;
-
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="author">
-                                            <?php
-                                            if (Materialpool_Material::has_autor()) {
-                                                ?>
-                                                <img class="taxonomy-icon"
-                                                     src="<?php echo get_stylesheet_directory_uri() . "/assets/003-user.svg" ?> "
-                                                     alt="">
-                                                <?php
-                                                echo Materialpool_Material::get_autor_html();
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="bildungsstufe">
-                                            <?php if (!empty(Materialpool_Material::get_bildungsstufen() || !empty(Materialpool_Material::get_inklusion()))) { ?>
-                                                <img class="taxonomy-icon"
-                                                     src="<?php echo get_stylesheet_directory_uri() . "/assets/007-volume.svg" ?>  "
-                                                     alt="">
-                                                <?php echo Materialpool_Material::get_bildungsstufen(); ?>
-                                                <?php echo Materialpool_Material::get_inklusion(); ?>
-                                            <?php } ?>
-                                        </div>
-                                        <div class="medientypen">
-                                            <?php if (!empty(Materialpool_Material::get_medientypen())) { ?>
-
-                                                <img class="taxonomy-icon"
-                                                     src="<?php echo get_stylesheet_directory_uri() . "/assets/009-package.svg" ?> "
-                                                     alt="">
-                                                <?php echo Materialpool_Material::get_medientypen(); ?>
-
-                                            <?php } ?>
-                                        </div>
-                                        <div class="schlagworte">
-                                            <?php if (!empty(Materialpool_Material::get_schlagworte_html())) { ?>
-
-                                                <img class="taxonomy-icon"
-                                                     src="<?php echo get_stylesheet_directory_uri() . "/assets/001-price-tag.svg" ?> "
-                                                     alt="">
-                                                <?php echo Materialpool_Material::get_schlagworte_html(); ?>
-
-                                            <?php } ?>
-                                        </div>
-                                        <div style="text-align: end">
-                                            <?php echo Materialpool_Material::rating_facet_html(); ?>
-                                        </div>
-                                        <?php if (is_user_logged_in()) { ?>
-                                            <div style="float: right;">
-                <span id="themenseitenedit_<?php echo $post->ID; ?>" data-materialid="<?php echo $post->ID; ?>"
-                      data-materialtitel="<?php echo $post->post_title; ?>"
-                      data-materialurl="<?php echo get_permalink($post->ID); ?>" class="themenseitenedit btn-neutral"><i
-                            class="fas fa-ellipsis-v"> </i></span>
-                                            </div>
-                                        <?php } ?>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <?php
-                            $buffer = ob_get_contents();
-                            ob_end_clean();
-                            echo $buffer;
-                            set_transient('facet_autor_entry-' . $post->ID, $buffer);
-                        } else {
-                            echo $transient;
-                        }
-                        ?>
-                        </article>
-                    <?php endwhile; ?>
-                </div>
-
-
-                <?php
-                wp_reset_postdata();
-                unset($my_query);
+                $my_query = new WP_Query($args);
+                include get_stylesheet_directory() . "/facetwp_templates/material.php";
             }
             $startseite_aktuell = get_field('startseite_themen');
 
@@ -232,9 +87,44 @@ if ($show_aktuell == 1) {
     <div class="clear"></div>
     <?php
 }
-
-
 ?>
+
+
+<?php
+$show_oer = get_field('show_oer');
+if ($show_oer) {
+
+    $args = array(
+        "post_type" => "material",
+        "post_status" => "publish",
+        "orderby" => "date",
+        "order" => "DESC",
+        "posts_per_page" => 3,
+        "tax_query" => array(
+            array(
+                "taxonomy" => "lizenz",
+                "field" => "slug",
+                "terms" => array('non-commercial-copyable', 'non-commercial-remixable', 'copyable', 'remixable')
+            )
+        )
+    );
+
+    $my_query = new WP_Query($args);
+    ?>
+    <div class="startseite-block-header">
+        <P><?php
+            $startseite_oer_titel = get_field('startseite_oer_titel');
+            echo do_shortcode($startseite_oer_titel);
+            ?></P>
+        <div class="startseite-block-content  material-results">
+            <?php include get_stylesheet_directory() . "/facetwp_templates/material.php"; ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <?php
+}
+?>
+
 <?php
 $show_neu = get_field('show_neu');
 if ($show_neu == 1) {
@@ -245,7 +135,32 @@ if ($show_neu == 1) {
             echo do_shortcode($startseite_neu_titel);
             ?></P>
         <div class="startseite-block-content  material-results">
-            <?php echo facetwp_display('template', 'startseite_neue_materialien'); ?>
+            <?php
+            $args = [
+                "post_type" => [
+                    "material"
+                ],
+                "post_status" => [
+                    "publish"
+                ],
+                "tax_query" => [
+                    [
+                        "taxonomy" => "vorauswahl",
+                        "field" => "slug",
+                        "operator" => "IN",
+                        "terms" => [
+                            "handverlesen"
+                        ]
+                    ]
+                ],
+                "orderby" => [
+                    "date" => "DESC"
+                ],
+                "posts_per_page" => "6"
+            ];
+            $my_query = new WP_Query($args);
+            include get_stylesheet_directory() . "/facetwp_templates/material.php";
+            ?>
         </div>
     </div>
     <div class="clear"></div>
@@ -272,33 +187,12 @@ if ($show_themenseiten) {
             ?>
         </div>
     </div>
-
-    <div class="clear"></div>
-
-
-    <?php
-}
-?>
-
-
-
-<?php
-$show_oer = get_field('show_oer');
-if ($show_oer == 1) {
-    ?>
-    <div class="startseite-block-header">
-        <P><?php
-            $startseite_oer_titel = get_field('startseite_oer_titel');
-            echo do_shortcode($startseite_oer_titel);
-            ?></P>
-        <div class="startseite-block-content  material-results">
-            <?php echo facetwp_display('template', 'startseite_oer'); ?>
-        </div>
-    </div>
     <div class="clear"></div>
     <?php
 }
 ?>
+
+
 <?php
 $show_special = get_field('show_special');
 if ($show_special == 1) {

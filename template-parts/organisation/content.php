@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
     <div class="organisation-detail-grid">
         <?php
         if ('organisation' === get_post_type()) { ?>
-            <h1 class="entry-title">Unsere Praxishilfen</h1>
+            <h1 class="entry-title organisation-title">Unsere Praxishilfen</h1>
             <?php } ?>
         <div class="detail-organisation-search">
             <div class="organisation-content">

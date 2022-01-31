@@ -80,6 +80,9 @@ ob_start();
             <div class="material-old">
                 <?php echo facetwp_display('facet', 'test'); ?>
             </div>
+            <div>
+
+            </div>
             <div class="material-results"><?php echo facetwp_display('template', 'material_suchausgabe'); ?></div>
         </div>
     </div>

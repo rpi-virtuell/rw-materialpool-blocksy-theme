@@ -27,15 +27,18 @@ get_header();
             <div class="organisation-meta">
                 <?php if (Materialpool_Organisation::is_alpika()): ?>
                     <div class="tooltip">Alpika Institut
-                        <span class="tooltiptext">
-                                <img class="alpika-logo"
-                                     src="http://material.rpi-virtuell.de/wp-content/plugins/rw-materialpool//assets/alpika.png">
+                        <span class="tooltiptext alpikatooltip">
                                 <br>
                                 <?php Materialpool_Organisation::title(); ?>
                                         ist Teil der <a href="http://www.relinet.de/alpika.html">Arbeitsgemeinschaft</a>
                                 der Pädagogischen Institute und Katechetischen Ämter  in der Evangelischen Kirche in Deutschland.
-                            <img class="ekd-logo"
-                                 src="https://datenschutz.ekd.de/wp-content/uploads/2015/01/EKD-Logo.png">
+                            <hr>
+                            <div>
+                                <img class="alpika-logo"
+                                     src="http://material.rpi-virtuell.de/wp-content/plugins/rw-materialpool//assets/alpika.png">
+                                <img class="ekd-logo"
+                                     src="https://datenschutz.ekd.de/wp-content/uploads/2015/01/EKD-Logo.png">
+                            </div>
                             </span>
                     </div>
                 <?php elseif (Materialpool_Organisation::get_konfession() == 'evangelisch'): ?>
@@ -96,7 +99,7 @@ get_header();
             </button>
             <div class="detail-autor-meta desktop">
                 <?php echo "| " . "Anzahl der Materialien: " . Materialpool_Organisation::get_count_posts_per_organisation() . " | " ?>
-                <?php echo "Material Aufrufe insgesamt: " . Materialpool_Organisation::get_post_views_per_organisation() . " |"?>
+                <?php echo "Material Aufrufe insgesamt: " . Materialpool_Organisation::get_post_views_per_organisation() . " |" ?>
             </div>
         </div>
     </div>
