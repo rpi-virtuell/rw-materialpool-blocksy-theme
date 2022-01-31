@@ -75,13 +75,12 @@ ob_start();
             <div class="clear"></div>
             <div class="material-selection"><?php echo facetwp_display('selections'); ?></div>
             <div class="clear"></div>
-
+            <div class="material-counter">
+                <?php echo facetwp_display( 'counts' ); ?> Treffer
+            </div>
             <div class="clear"></div>
             <div class="material-old">
                 <?php echo facetwp_display('facet', 'test'); ?>
-            </div>
-            <div>
-
             </div>
             <div class="material-results"><?php echo facetwp_display('template', 'material_suchausgabe'); ?></div>
         </div>

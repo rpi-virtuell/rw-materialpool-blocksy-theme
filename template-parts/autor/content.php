@@ -54,14 +54,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <div class="material-counter">
 							<?php echo facetwp_display( 'counts' ); ?> Treffer
                         </div>
-                        <div class="material-pager">
-							<?php echo facetwp_display( 'pager' ); ?>
-                        </div>
                     </div>
                     <div class="clear"></div>
                     <div class="material-results">
 						<?php echo facetwp_display( 'template', 'material_autor' ); ?></div>
-                    <div class="material-pager"><?php echo facetwp_display( 'pager' ); ?></div>
 
                 </div>
             </div>

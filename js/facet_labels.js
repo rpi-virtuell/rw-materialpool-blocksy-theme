@@ -42,7 +42,7 @@ jQuery(document).on('facetwp-loaded', function() {
             jQuery(this).hide();
             jQuery('.facet-label.'+facet_name).hide();
         }else{
-            if(facet_name != 'suche'){
+            if(facet_name != 'suche' && facet_name != 'autor_suche' && facet_name != 'organisation_suche'){
                 jQuery(this).show();
                 var facet_label = FWP.settings.labels[facet_name];
                 if (jQuery('.facet-label[data-for="' + facet_name + '"]').length < 1) {

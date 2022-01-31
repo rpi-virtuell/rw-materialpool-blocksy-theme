@@ -110,7 +110,7 @@ span.thema-title a {
 .material-suche .facetwp-icon {
     height: 30px;
     line-height: 1;
-    position: relative;
+    position: absolute;
     cursor: pointer;
     opacity: 0.5;
     top: 40px;
@@ -658,7 +658,11 @@ h5.facet-label.test {
 }
 
 div.facetwp-facet-suche {
-    margin: 0;
+    grid-column-start: 1;
+    grid-column: 1;
+    width: 100%;
+}
+.facetwp-facet-suche span {
     width: 100%;
 }
 
@@ -797,6 +801,10 @@ div.material-suche .facetwp-btn:hover {
     width: 100%;
     object-fit: cover;
     z-index: 1;
+}
+
+.thema-excerpt.themenseite{
+    margin-top: 15px;
 }
 
 .facet-treffer-content.material-shortdescription {

@@ -37,19 +37,28 @@
 }
 .material-filter-button{
     width: fit-content;
+    grid-column: 2;
 }
 .material-filter-button button {
     color: white;
     background-color: #e4301c;
     width: 110px;
-    padding: 3px 20px;
+    padding: 10px 20px;
     border-radius: 3px;
     display: block;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 12px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
+}
+
+.facetwp-search {
+    background-color: #fff !important;
+    border: 2px solid #CC4C4B !important;
+    margin: 30px 0 0 0 !important;
+    min-width: unset !important;
+    width: 100% !important;
 }
 
 .facetwp-selections li{
@@ -70,6 +79,67 @@
     font-size: 16px;
     text-align: center;
     display: none;
+}
+
+.frontpage-search-container{
+    background: linear-gradient(90deg, #3A8BC3, #3A8CC0, #3A8BC3 100%);
+    padding: 20px 0 50px;
+    margin: 20px 20px;
+}
+
+.frontpage-search{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.frontpage-search div{
+    flex: auto;
+}
+.frontpage-search-field.search{
+    min-width: 250px;
+    width: 30%;
+    background-color: #ddd;
+    border: 2px solid #CC4C4B!important;
+    margin-right: 10px;
+    box-shadow: 2px 2px 6px #000;
+}
+.frontpage-search-field.search:focus,select.frontpage-search-field:focus {
+    background-color: #fff;
+}
+select.frontpage-search-field{
+    min-width: 170px;
+    width: 30%;
+    border: 2px solid #CC4C4B!important;
+    background-color: #ddd;
+    box-shadow: 2px 2px 6px #000;
+
+}
+.frontpage-search-field.material-filter-button{
+    width: 90px;
+    background-color: #CC4C4B!important;
+    margin-left: 10px;
+    box-shadow: 2px 2px 6px #000;
+    border: 2px solid #CC4C4B!important;
+}
+.frontpage-search-field.material-filter-button:hover{
+    background-color: #fff!important;
+    color:#CC4C4B;
+    box-shadow: 1px 1px 4px #000;
+}
+
+.frontpage-themenliste{
+    display: flex;
+    flex-wrap: wrap;
+}
+.frontpage-themenliste a {
+    flex: auto;
+    margin: 3px;
+}
+
+.material-suche{
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    grid-gap: 10px;
 }
 
 .material-detail-grid {
@@ -181,6 +251,33 @@
     }
     .detail-organisation-header, .detail-autor-header {
         grid-template-columns: unset;
+    }
+    .material-suche{
+        display: flex;
+    }
+
+    .frontpage-search div{
+        display: none;
+    }
+    .frontpage-search-field.search{
+        min-width: 99%;
+    }
+    select.frontpage-search-field{
+        width: auto;
+        max-width: 66%;
+        margin: 0;
+    }
+    .frontpage-search-field.material-filter-button {
+        max-height: 40px;
+        max-width: 34%;
+        min-width: 33%;
+        margin: 0;
+        padding: 2px 5px;
+    }
+    .frontpage-search-container{
+        margin: 0  20px;
+        padding: 0px 0 5px;
+        background: none;
     }
 }
 
