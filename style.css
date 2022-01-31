@@ -59,7 +59,7 @@
 
 .facetwp-search {
     background-color: #fff !important;
-    border: 2px solid #CC4C4B !important;
+    border: 2px solid #e4301c !important;
     margin: 30px 0 0 0 !important;
     min-width: unset !important;
     width: 100% !important;
@@ -103,7 +103,7 @@
     min-width: 250px;
     width: 30%;
     background-color: #ddd;
-    border: 2px solid #CC4C4B!important;
+    border: 2px solid #e4301c!important;
     margin-right: 10px;
     box-shadow: 2px 2px 6px #000;
 }
@@ -113,21 +113,21 @@
 select.frontpage-search-field{
     min-width: 170px;
     width: 30%;
-    border: 2px solid #CC4C4B!important;
+    border: 2px solid #e4301c!important;
     background-color: #ddd;
     box-shadow: 2px 2px 6px #000;
 
 }
 .frontpage-search-field.material-filter-button{
     width: 90px;
-    background-color: #CC4C4B!important;
+    background-color: #e4301c!important;
     margin-left: 10px;
     box-shadow: 2px 2px 6px #000;
-    border: 2px solid #CC4C4B!important;
+    border: 2px solid #e4301c!important;
 }
 .frontpage-search-field.material-filter-button:hover{
     background-color: #fff!important;
-    color:#CC4C4B;
+    color:#e4301c;
     box-shadow: 1px 1px 4px #000;
 }
 
