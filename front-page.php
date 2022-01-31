@@ -8,9 +8,92 @@
  */
 
 ob_start();
+?>
+<style>
+    .frontpage-search-container{
+        background: linear-gradient(90deg, #3A8BC3, #3A8CC0, #3A8BC3 100%);
+        padding: 20px 0 50px;
+        margin: 20px 20px;
+    }
 
+    .frontpage-search{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+    .frontpage-search div{
+        flex: auto;
+    }
+    .frontpage-search-field.search{
+        min-width: 250px;
+        width: 30%;
+        background-color: #ddd;
+        border: 2px solid #CC4C4B!important;
+        margin-right: 10px;
+        box-shadow: 2px 2px 6px #000;
+    }
+    .frontpage-search-field.search:focus,select.frontpage-search-field:focus {
+        background-color: #fff;
+    }
+    select.frontpage-search-field{
+        min-width: 170px;
+        width: 30%;
+        border: 2px solid #CC4C4B!important;
+        background-color: #ddd;
+        box-shadow: 2px 2px 6px #000;
+
+    }
+    .frontpage-search-field.material-filter-button{
+        width: 90px;
+        background-color: #CC4C4B!important;
+        margin-left: 10px;
+        box-shadow: 2px 2px 6px #000;
+        border: 2px solid #CC4C4B!important;
+    }
+    .frontpage-search-field.material-filter-button:hover{
+        background-color: #fff!important;
+        color:#CC4C4B;
+        box-shadow: 1px 1px 4px #000;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .frontpage-search div{
+            display: none;
+        }
+        .frontpage-search-field.search{
+            min-width: 271px;
+
+        }
+
+    }
+
+</style>
+
+<div class="startseite-block-content">
+    <div class="frontpage-search-container">
+        <form action="/facettierte-suche/">
+        <div class="frontpage-search">
+                <div></div>
+                <input class="frontpage-search-field search" type="text" name="fwp_suche" placeholder="Suchbegriff eingeben">
+                <select class="frontpage-search-field" name="fwp_bildungsstufe">
+                    <option value="">Alle Bereiche</option>
+                    <option value="elementary">Elementarbereich</option>
+                    <option value="primary">Grundschule</option>
+                    <option value="secondary">Sekundarstufe</option>
+                    <option value="advanced">Oberstufe</option>
+                    <option value="professional">Berufsschule</option>
+                    <option value="teachers">Unterrichtende</option>
+                    <option value="adult-education">Erwachsenenbildung</option>
+                    <option value="confirmation-work">Konfirmandenarbeit</option>
+                </select>
+                <input class="frontpage-search-field material-filter-button" type="submit" value="Suchen">
+                <div></div>
+        </div>
+        </form>
+    </div>
+</div>
+<?php
 $show_title = get_field('show_title');
-
 if ($show_title):
 
     $startseite_title = get_field('startseite_title');
