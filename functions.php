@@ -56,7 +56,7 @@ function rw_material_get_themenliste()
 
     }
 
-    return implode('<span> · </span>', $links);
+    return '<div class="frontpage-themenliste">'.implode('<span></span>', $links).'</div>';
 
 }
 
@@ -144,6 +144,13 @@ function facetwp_query_args_organisation($query_args, $class)
 }
 
 add_filter('facetwp_query_args', 'facetwp_query_args_organisation', 10, 2);
+
+add_filter( 'facetwp_result_count', function( $output, $params ) {
+	//$output = $params['lower'] . '-' . $params['upper'] . ' of ' . $params['total'] . ' results';
+	$output = $params['total'];
+	return $output;
+}, 10, 2 );
+
 
 function facetwp_query_args_werkzeug($query_args, $class)
 {

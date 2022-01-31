@@ -78,8 +78,19 @@ ob_start();
         .frontpage-search-container{
             margin: 0  20px;
             padding: 0px 0 5px;
+            background: none;
         }
     }
+
+    .frontpage-themenliste{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .frontpage-themenliste a {
+        flex: auto;
+        margin: 3px;
+    }
+
 
 </style>
 
