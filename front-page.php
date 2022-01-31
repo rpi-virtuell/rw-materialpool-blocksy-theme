@@ -61,10 +61,24 @@ ob_start();
             display: none;
         }
         .frontpage-search-field.search{
-            min-width: 271px;
-
+            min-width: 99%;
         }
-
+        select.frontpage-search-field{
+            width: auto;
+            max-width: 66%;
+            margin: 0;
+        }
+        .frontpage-search-field.material-filter-button {
+            max-height: 40px;
+            max-width: 34%;
+            min-width: 33%;
+            margin: 0;
+            padding: 2px 5px;
+        }
+        .frontpage-search-container{
+            margin: 0  20px;
+            padding: 0px 0 5px;
+        }
     }
 
 </style>
