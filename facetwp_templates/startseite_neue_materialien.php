@@ -1,3 +1,10 @@
+<?php
+/**
+ * #DEPRECATED
+ * TODO: This File is deprecated and should be removed
+ */
+?>
+
 <div class="material-grid-layout"<?php if (true) echo'data-layout="enhanced-grid"';  ?> data-cards="boxed">
     <?php
     while (have_posts()) : the_post(); ?>

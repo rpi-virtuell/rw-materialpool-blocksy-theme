@@ -27,20 +27,10 @@
                 if (!Materialpool_Material::is_special() && !Materialpool_Material::is_viewer() && !Materialpool_Material::is_playable()) {
                     ?>
                     <div class="detail-cover normal-cover"> <?php
-                        echo "<a href='" . Materialpool_Material::get_url()  ."'>";
+                        echo "<a href='" . Materialpool_Material::get_url() . "'>";
                         echo Materialpool_Material::cover_facet_html_noallign(null, get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg");
                         echo "</a>";
-                        if (Materialpool_Material::get_picture_source() != '') {
-                            if (Materialpool_Material::get_picture_url() != '') {
-                                echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . Materialpool_Material::get_picture_source() . "</a>";
-                            } else {
-                                echo "Bildquelle: " . Materialpool_Material::get_picture_source();
-                            }
-                        } else {
-                            if (Materialpool_Material::get_picture_url() != '') {
-                                $host = parse_url(Materialpool_Material::get_picture_url());
-                            }
-                        } ?>
+                        ?>
                     </div>
                     <?php
                 } else {
@@ -53,6 +43,15 @@
                 <?php } ?>
                 <div class="detail-cover-source">
                     <?php
+                    if (Materialpool_Material::get_picture_source() != '') {
+                        if (Materialpool_Material::get_picture_url() != '') {
+                            echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . Materialpool_Material::get_picture_source() . "</a>";
+                        } else {
+                            echo "Bildquelle: " . Materialpool_Material::get_picture_source();
+                        }
+                    } elseif (Materialpool_Material::get_picture_url() != '') {
+                        $host = parse_url(Materialpool_Material::get_picture_url());
+                    }
                     if (!empty($host['host'])) {
                         echo "Bildquelle: <a href='" . Materialpool_Material::get_picture_url() . "'>" . $host['host'] . "</a>";
                     }
@@ -67,7 +66,7 @@
             <div class="detail-origin detail-element">
                 <div class="detail-herkunft">
                     <?php if (Materialpool_Material::has_organisation()) { ?>
-                    <h4> Herkunft</h4>
+                        <h4> Herkunft</h4>
                         <div class="detail-herkunft-organisation">
                             <?php Materialpool_Material::organisation_html_cover();
                             $organisationen = Materialpool_Material::get_organisation();
@@ -98,32 +97,32 @@
                         global $post;
                         $verweise = Materialpool_Material::get_autor();
                         if (!empty($verweise) && is_array($verweise)) {
-                                $accordion = '<h3> Autoren </h3>';
-                                $accordion .= '<div class="detail-herkunft-author" ';
-                                if (count($verweise) == 1)
-                                    $accordion .= 'style = "grid-template-columns: unset"';
-                                $accordion .= '>';
-                                foreach ($verweise as $verweisID) {
-                                    $verweis = get_post($verweisID, ARRAY_A);
-                                    $url = get_permalink($verweis['ID']);
-                                    $logo = get_metadata('post', $verweis['ID'], 'autor_bild_url', true);
-                                    $vorname = get_post_meta($verweis['ID'], 'autor_vorname', true);
-                                    $nachname = get_post_meta($verweis['ID'], 'autor_nachname', true);
-                                     $accordion .= '<div class="detail-herkunft-single-author">';
-                                    if ($logo != '') {
-                                        //echo '<a href="' . $url . '" class="'. apply_filters( 'materialpool-template-material-verweise', 'materialpool-template-material-autor-logo' ) .'"><img  class="'. apply_filters( 'materialpool-template-material-verweise', 'materialpool-template-material-autor-logo' ) .'" src="' . $logo . '"></a>';
-                                        $accordion .= '<a href="' . $url . '" style="background-image:url(\'' . $logo . '\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="' . $logo . '"></a>';
-                                    } else {
-                                        $accordion .= '<a href="' . $url . '" style="background-image:url(\'/wp-content/themes/rw_materialpool-blocksy-theme/assets/Portrait_placeholder.png\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="../../assets/Portrait_placeholder.png"></a>';
-                                    }
-                                    $accordion .= '<div class="detail-herkunft-single-author-name">';
-                                    $accordion .= '<a href="' . $url . '" class="' . apply_filters('materialpool-template-material-autor', 'materialpool-template-material-autor') . '">' . $vorname . ' ' . $nachname . '</a>';
-                                    $accordion .= '</div>';
-                                    $accordion .= '</div>';
+                            $accordion = '<h3> Autoren </h3>';
+                            $accordion .= '<div class="detail-herkunft-author" ';
+                            if (count($verweise) == 1)
+                                $accordion .= 'style = "grid-template-columns: unset"';
+                            $accordion .= '>';
+                            foreach ($verweise as $verweisID) {
+                                $verweis = get_post($verweisID, ARRAY_A);
+                                $url = get_permalink($verweis['ID']);
+                                $logo = get_metadata('post', $verweis['ID'], 'autor_bild_url', true);
+                                $vorname = get_post_meta($verweis['ID'], 'autor_vorname', true);
+                                $nachname = get_post_meta($verweis['ID'], 'autor_nachname', true);
+                                $accordion .= '<div class="detail-herkunft-single-author">';
+                                if ($logo != '') {
+                                    //echo '<a href="' . $url . '" class="'. apply_filters( 'materialpool-template-material-verweise', 'materialpool-template-material-autor-logo' ) .'"><img  class="'. apply_filters( 'materialpool-template-material-verweise', 'materialpool-template-material-autor-logo' ) .'" src="' . $logo . '"></a>';
+                                    $accordion .= '<a href="' . $url . '" style="background-image:url(\'' . $logo . '\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="' . $logo . '"></a>';
+                                } else {
+                                    $accordion .= '<a href="' . $url . '" style="background-image:url(\'/wp-content/themes/rw_materialpool-blocksy-theme/assets/Portrait_placeholder.png\')" class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '"><img  class="' . apply_filters('materialpool-template-material-verweise', 'materialpool-template-material-autor-logo') . '" src="../../assets/Portrait_placeholder.png"></a>';
                                 }
+                                $accordion .= '<div class="detail-herkunft-single-author-name">';
+                                $accordion .= '<a href="' . $url . '" class="' . apply_filters('materialpool-template-material-autor', 'materialpool-template-material-autor') . '">' . $vorname . ' ' . $nachname . '</a>';
                                 $accordion .= '</div>';
-                               echo do_shortcode('[accordion]'.$accordion .'[/accordion]');
-                               ?>
+                                $accordion .= '</div>';
+                            }
+                            $accordion .= '</div>';
+                            echo do_shortcode('[accordion]' . $accordion . '[/accordion]');
+                            ?>
                         <?php }
                     } ?>
                     <?php if (Materialpool_Material::get_werk_id()) { ?>

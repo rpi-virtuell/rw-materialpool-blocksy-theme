@@ -657,12 +657,12 @@ h5.facet-label.test {
     display: none !important;
 }
 
-div.facetwp-facet-suche {
+div.facetwp-facet-suche , div.facetwp-facet-autor_suche , div.facetwp-facet-organisation_suche{
     grid-column-start: 1;
     grid-column: 1;
     width: 100%;
 }
-.facetwp-facet-suche span {
+.facetwp-facet-suche span , .facetwp-facet-autor_suche span , .facetwp-facet-organisation_suche span{
     width: 100%;
 }
 

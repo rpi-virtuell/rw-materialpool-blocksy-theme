@@ -1,3 +1,10 @@
+<?php
+/**
+ * #DEPRECATED
+ * TODO: This File is deprecated and should be removed
+ */
+?>
+
 <?php while (have_posts()) : the_post(); ?>
     <div class="facet-treffer">
         <div class="facet-treffer-mediatyps">
