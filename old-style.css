@@ -390,7 +390,7 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
 }
 
 .entry-card.alpika {
-    background: lightyellow url('/wp-content/plugins/rw-materialpool/assets/alpika.png') no-repeat left bottom !important;
+    background: lightyellow !important;
     border: 1px solid #FEDFB2 !important;
     padding-top: 40px !important;
 
@@ -791,6 +791,8 @@ div.material-suche .facetwp-btn:hover {
     width: 100%;
     z-index: 0;
     display: flex;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
 }
 
 .search-cover img {
@@ -799,7 +801,7 @@ div.material-suche .facetwp-btn:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     z-index: 1;
 }
 

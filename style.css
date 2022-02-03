@@ -39,6 +39,27 @@
     box-shadow: 2px 1px 12px 2px aliceblue;
     padding: 0 20px 0 20px;
 }
+
+.loading-icon{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    bottom: 75px;
+    right: 75px;
+    height: 70px;
+    width: 70px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, .8)
+                url('/wp-content/themes/rw_materialpool-blocksy-theme/assets/Loading_icon.gif') 10px no-repeat;
+    background-size: 50px;
+}
+body.loading .loading-icon{
+    overflow: hidden;
+}
+body.loading .loading-icon{
+    display: block;
+}
+
 .material-filter-button{
     width: fit-content;
     grid-column: 2;
@@ -435,16 +456,16 @@ select.frontpage-search-field{
     margin: 10px 0;
 }
 
-.autor-cover-container, .organisation-cover-container {
+.autor-cover-container, .organisation-cover- {
     height: fit-content;
     width: fit-content;
     margin: auto;
-    box-shadow: 2px 2px 11px black;
-    border: 1px solid #ccc;
 }
 
-.autor-cover img {
-    height: 200px;
+.autor-cover img, .organisation-cover img {
+    max-height: 200px;
+    box-shadow: 2px 2px 11px black;
+    border: 1px solid #ccc;
 }
 
 .autor-cover a {
@@ -543,9 +564,6 @@ select.frontpage-search-field{
     padding: 10px;
 }
 
-.organisation-cover img {
-    max-height: 200px;
-}
 
 .tooltip {
     position: relative;

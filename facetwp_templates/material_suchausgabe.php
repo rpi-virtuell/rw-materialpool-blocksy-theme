@@ -4,7 +4,7 @@
 
         <?php
 
-        if (true || false === ($transient = get_transient('facet_serach2_entry-' . $post->ID))) {
+        if (($transient = get_transient('facet_serach2_entry-' . $post->ID))) {
             ob_start();
 
             ?>
@@ -164,122 +164,91 @@
         ?>
 
     <?php endwhile; ?>
+</div>
+<div class="loading-icon"></div>
+<script src="<?php echo get_stylesheet_directory_uri() . '/js/infinite_load.js' ?>" type="text/javascript">
+</script>
 
+<script>
+    jQuery(document).ready(function () {
 
-    <script>
-        jQuery(document).ready(function () {
-
-            if (typeof jQuery.contextMenu != 'undefined' && typeof themenseiten != 'undefined' && Object.keys(themenseiten).length !== 0) {
-                jQuery.contextMenu({
-                    selector: '.themenseitenedit',
-                    trigger: 'left',
-                    build: function ($trigger, e) {
-                        var items = new Object();
-                        items['titel_' + themenseiten[0].id] = {name: "Themenseite: " + themenseiten[0].titel}
-                        items['sep1'] = "---------";
-                        for (var tg in themengruppen) {
-                            var material = new Object;
-                            material['add_' + themengruppen[tg].id] = {name: "Material hinzufügen"};
-                            material['sep' + tg] = "---------";
-                            for (var m in materialien) {
-                                if (themengruppen[tg].id == materialien[m].gruppenid) {
-                                    material["m_" + materialien[m].materialid] = {name: materialien[m].titel};
-                                }
+        if (typeof jQuery.contextMenu != 'undefined' && typeof themenseiten != 'undefined' && Object.keys(themenseiten).length !== 0) {
+            jQuery.contextMenu({
+                selector: '.themenseitenedit',
+                trigger: 'left',
+                build: function ($trigger, e) {
+                    var items = new Object();
+                    items['titel_' + themenseiten[0].id] = {name: "Themenseite: " + themenseiten[0].titel}
+                    items['sep1'] = "---------";
+                    for (var tg in themengruppen) {
+                        var material = new Object;
+                        material['add_' + themengruppen[tg].id] = {name: "Material hinzufügen"};
+                        material['sep' + tg] = "---------";
+                        for (var m in materialien) {
+                            if (themengruppen[tg].id == materialien[m].gruppenid) {
+                                material["m_" + materialien[m].materialid] = {name: materialien[m].titel};
                             }
-                            items["tg_" + tg + "_" + themengruppen[tg].themenid] = {
-                                name: themengruppen[tg].titel,
-                                items: material
-                            };
                         }
-                        items['sep2'] = "---------";
-                        items['quit'] = {
-                            name: "Speichern und Beenden",
-                        };
-                        return {
-                            callback: function (key, opt, $trigger) {
-                                res = key.split("_");
-                                if (res[0] == "m") {
-                                    // Vorhandenes Material angeklickt, URL holen und dorthin weiterleiten.
-                                    db.materialien.where("id").equals(parseInt(res[1])).toArray().then(function (response) {
-                                        var win = window.open(response[0].url, '_blank');
-                                        win.focus();
-                                    });
-                                }
-                                if (res[0] == "titel") {
-                                    // Vorhandene Themengruppe angeklickt, Themenseiten URL holen und dorthin weiterleiten.
-                                    db.themenseiten.where("id").equals(parseInt(res[1])).toArray().then(function (response) {
-                                        var win = window.open(response[0].url, '_blank');
-                                        win.focus();
-                                    });
-                                }
-                                if (res[0] == "add") {
-                                    // Material einer Themengruppe hinzufügen
-                                    var themengruppe = res[1];
-                                    var url = opt.$trigger[0].getAttribute('data-materialurl');
-                                    var id = opt.$trigger[0].getAttribute('data-materialid');
-                                    var titel = opt.$trigger[0].getAttribute('data-materialtitel');
-                                    db.materialien.add({
-                                        materialid: parseInt(id),
-                                        gruppenid: themengruppe,
-                                        titel: titel,
-                                        url: url
-                                    });
-                                    db.materialien.toArray().then(function (response) {
-                                        materialien = response;
-                                    });
-                                }
-                                if (res[0] == "quit") {
-                                    // Daten an Materialpool übergeben und DB löschen.
-                                    var data = {
-                                        'action': 'mp_update_themenseite',
-                                        'material': materialien,
-                                        'themenseite': themenseiten,
-                                    };
-                                    jQuery.post(ajaxurl, data, function (response) {
-                                        ret = response;
-                                        db.delete();
-                                        themenseiten = new Object();
-                                    });
-                                }
-                            },
-                            items: items
+                        items["tg_" + tg + "_" + themengruppen[tg].themenid] = {
+                            name: themengruppen[tg].titel,
+                            items: material
                         };
                     }
-                });
-            }
-        });
-    </script>
-
-    <script>
-
-        (function ($) {
-            window.fwp_is_paging = false;
-            $(document).on('facetwp-refresh', function () {
-                if (!window.fwp_is_paging) {
-                    window.fwp_page = 1;
-                    FWP.extras.per_page = 'default';
-                }
-                window.fwp_is_paging = false;
-            });
-            $(document).on('facetwp-loaded', function () {
-                window.fwp_total_rows = FWP.settings.pager.total_rows;
-                if (!FWP.loaded) {
-                    window.fwp_default_per_page = FWP.settings.pager.per_page;
-                    $(window).scroll(function () {
-                        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                            var rows_loaded = (window.fwp_page * window.fwp_default_per_page);
-                            if (rows_loaded < window.fwp_total_rows) {
-                                //console.log(rows_loaded + ' of ' + window.fwp_total_rows + ' rows');
-                                window.fwp_page++;
-                                window.fwp_is_paging = true;
-                                FWP.extras.per_page = (window.fwp_page * window.fwp_default_per_page);
-                                FWP.soft_refresh = true;
-                                FWP.refresh();
+                    items['sep2'] = "---------";
+                    items['quit'] = {
+                        name: "Speichern und Beenden",
+                    };
+                    return {
+                        callback: function (key, opt, $trigger) {
+                            res = key.split("_");
+                            if (res[0] == "m") {
+                                // Vorhandenes Material angeklickt, URL holen und dorthin weiterleiten.
+                                db.materialien.where("id").equals(parseInt(res[1])).toArray().then(function (response) {
+                                    var win = window.open(response[0].url, '_blank');
+                                    win.focus();
+                                });
                             }
-                        }
-                    });
+                            if (res[0] == "titel") {
+                                // Vorhandene Themengruppe angeklickt, Themenseiten URL holen und dorthin weiterleiten.
+                                db.themenseiten.where("id").equals(parseInt(res[1])).toArray().then(function (response) {
+                                    var win = window.open(response[0].url, '_blank');
+                                    win.focus();
+                                });
+                            }
+                            if (res[0] == "add") {
+                                // Material einer Themengruppe hinzufügen
+                                var themengruppe = res[1];
+                                var url = opt.$trigger[0].getAttribute('data-materialurl');
+                                var id = opt.$trigger[0].getAttribute('data-materialid');
+                                var titel = opt.$trigger[0].getAttribute('data-materialtitel');
+                                db.materialien.add({
+                                    materialid: parseInt(id),
+                                    gruppenid: themengruppe,
+                                    titel: titel,
+                                    url: url
+                                });
+                                db.materialien.toArray().then(function (response) {
+                                    materialien = response;
+                                });
+                            }
+                            if (res[0] == "quit") {
+                                // Daten an Materialpool übergeben und DB löschen.
+                                var data = {
+                                    'action': 'mp_update_themenseite',
+                                    'material': materialien,
+                                    'themenseite': themenseiten,
+                                };
+                                jQuery.post(ajaxurl, data, function (response) {
+                                    ret = response;
+                                    db.delete();
+                                    themenseiten = new Object();
+                                });
+                            }
+                        },
+                        items: items
+                    };
                 }
             });
-        })(jQuery);
-
-    </script>
+        }
+    });
+</script>

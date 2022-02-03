@@ -129,6 +129,5 @@ ob_start();
     $buffer = ob_get_contents();
     ob_end_clean();
     echo $buffer;
-    set_transient('facet_autor_entry-' . $post->ID, $buffer);
     ?>
 </article>

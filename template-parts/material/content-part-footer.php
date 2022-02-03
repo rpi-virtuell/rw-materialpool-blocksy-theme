@@ -1,5 +1,12 @@
 <?php
 /**
+ * #DEPRECATED
+ * TODO: This File is deprecated and should be removed
+ */
+?>
+
+<?php
+/**
  * Zeigt auf der Material-Detailseite den Detailfußbereich mit Bildungsstufe und Schlagworten
  * User: Joachim
  * Date: 21.01.2017

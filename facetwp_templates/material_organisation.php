@@ -10,7 +10,7 @@
 
     while (have_posts()) : the_post(); ?>
         <?php
-        if (true || false === ($transient = get_transient('facet_autor_entry-' . $post->ID))) {
+        if ($transient = get_transient('facet_organisation_entry-' . $post->ID)) {
             ob_start();
             ?>
             <article class="entry-card">
@@ -139,7 +139,7 @@
             $buffer = ob_get_contents();
             ob_end_clean();
             echo $buffer;
-            set_transient('facet_autor_entry-' . $post->ID, $buffer);
+            set_transient('facet_organisation_entry-' . $post->ID, $buffer);
         } else {
             echo $transient;
         }
