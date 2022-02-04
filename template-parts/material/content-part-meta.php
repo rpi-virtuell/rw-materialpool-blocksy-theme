@@ -55,26 +55,51 @@
             </td>
         </tr>
     <?php } ?>
-    <?php if (!Materialpool_Material::is_special() && (Materialpool_Material::get_availability() != '' || Materialpool_Material::get_lizenz() != '')): ?>
+    <?php if (!Materialpool_Material::is_special() && Materialpool_Material::get_lizenz() != '') { ?>
         <tr>
             <td>
                 <p>
+                    <img class="taxonomy-icon"
+                         src="<?php echo get_stylesheet_directory_uri() . "/assets/008-open-source.svg" ?> "
+                         alt="">
+                    Lizenz
+                </p>
+            </td>
+            <td>
+                <div class="material-meta-content-entry">
+                    <?php if (Materialpool_Material::get_lizenz() != ''):
+                        Materialpool_Material::lizenz();
+                    endif; ?>
+                </div>
+            </td>
+        </tr>
+    <?php } ?>
+    <?php if (!Materialpool_Material::is_special() && Materialpool_Material::get_availability() != '') { ?>
+        <tr>
+            <td>
+                <p>
+                    <?php if (Materialpool_Material::get_availability() == 'kostenpflichtig') { ?>
+                        <img class="taxonomy-icon"
+                             src="<?php echo get_stylesheet_directory_uri() . "/assets/013-padlock.svg" ?> "
+                             alt="">
+                    <?php } else { ?>
+                        <img class="taxonomy-icon"
+                             src="<?php echo get_stylesheet_directory_uri() . "/assets/014-unlock.svg" ?> "
+                             alt="">
+                    <?php } ?>
                     Verfügbarkeit
                 </p>
             </td>
             <td>
                 <div class="material-meta-content-entry">
-                    <?php if (Materialpool_Material::get_lizenz() != ''): ?>
-                        <?php Materialpool_Material::lizenz(); ?>
-                    <?php endif; ?>
                     <?php if (Materialpool_Material::get_availability() != ''): ?>
                         <?php Materialpool_Material::availability(); ?>
                     <?php endif; ?>
                 </div>
             </td>
         </tr>
-    <?php endif; ?>
-    <?php if (!Materialpool_Material::is_special() && !empty(Materialpool_Material::get_werkzeuge()) ) {?>
+    <?php } ?>
+    <?php if (!Materialpool_Material::is_special() && !empty(Materialpool_Material::get_werkzeuge())) { ?>
         <tr>
             <td>
                 <p>
