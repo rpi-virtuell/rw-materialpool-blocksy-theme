@@ -11,6 +11,7 @@
         <h3>Zu "<?php the_title('<b>', '</b>'); ?>" gehören weitere Materialien:</h3>
         <div class="material-grid-layout" data-layout="" data-cards="boxed">
             <?php
+            //TODO: refactor to material
             $ar = Materialpool_Material::volumes_ids();
             global $post;
             if ($ar === false) return;

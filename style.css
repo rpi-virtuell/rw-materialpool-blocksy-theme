@@ -609,3 +609,42 @@ select.frontpage-search-field{
     visibility: visible;
     opacity: 1;
 }
+
+.ct-comment-inner {
+    border: 1px solid #ddd;
+}
+
+
+.ct-comment-meta{
+    display: grid;
+    grid-template-areas:    "image-container comment-author"
+                            "image-container comment-meta-data";
+    grid-template-columns: 100px;
+    grid-gap: 10px;
+    background-color: #ddd;
+    color:unset;
+}
+.ct-comment-meta a{
+    color: revert;
+    background-color: #ddd;
+}
+.ct-image-container{
+    grid-area: image-container;
+    width: 75px !important;
+    height: 75px !important;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid lightsteelblue;
+}
+.ct-comment-author{
+    grid-area: comment-author;
+}
+.ct-comment-meta-data{
+    grid-area: comment-meta-data;
+}
+.ct-comment-content {
+    padding: 10px;
+    background: white;
+}
+
+

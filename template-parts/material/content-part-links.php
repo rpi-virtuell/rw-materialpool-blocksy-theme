@@ -14,7 +14,7 @@
             <div class="material-grid-layout" data-layout="" data-cards="boxed">
                 <?php
                 $ar = Materialpool_Material::get_verweise_ids();
-
+                //TODO: refactor to material
                 global $post;
                 if ($ar !== false && sizeof($ar) != 0) {
                     $args = array(

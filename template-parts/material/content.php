@@ -143,9 +143,13 @@
                         $value = $embed->run_shortcode($value);
                         $value = $embed->autoembed($value);
                         $value = do_shortcode($value);
-                        echo wp_trim_words(wp_strip_all_tags($value), 50,
-                            '<a id="more-button" href="#more"> Mehr Anzeigen</a>');
-
+                        if (50 < str_word_count(wp_strip_all_tags($value))) {
+                            echo wp_trim_words(wp_strip_all_tags($value), 50,
+                                '<a id="more-button" href="#more"> Mehr Anzeigen</a>');
+                        }
+                        else{
+                            echo $value;
+                        }
                         ?>
                     </div>
                     <div id="description-more" style="display: none">
