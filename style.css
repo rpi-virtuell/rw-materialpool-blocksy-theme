@@ -358,7 +358,6 @@ select.frontpage-search-field{
 
 .material-detail-grid .detail-origin .detail-herkunft-organisation {
     text-align: center;
-    max-height: 200px;
     background: #ddd;
     padding: 20px;
     border-radius: 10px;
