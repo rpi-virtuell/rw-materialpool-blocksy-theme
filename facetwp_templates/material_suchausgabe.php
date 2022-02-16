@@ -4,7 +4,7 @@
 
         <?php
 
-        if (($transient = get_transient('facet_serach2_entry-' . $post->ID))) {
+      /*  if (($transient = get_transient('facet_serach2_entry-' . $post->ID))) {*/
             ob_start();
 
             ?>
@@ -158,9 +158,10 @@
             ob_end_clean();
             echo $buffer;
             set_transient('facet_serach2_entry-' . $post->ID, $buffer);
-        } else {
+        /*} else {
             echo $transient;
-        }
+        }*/
+
         ?>
 
     <?php endwhile; ?>
