@@ -134,33 +134,32 @@
             </div>
             <div class="detail-desc">
 
-                <div id="description" class="description">
-                    <div id="description-short">
-                        <?php
-                        $value = apply_filters('the_content', Materialpool_Material::get_description());
-                        $embed = $GLOBALS['wp_embed'];
-                        // $value = do_shortcode('[accordion] <h3> Beschreibung </h3>' . $value . '[/accordion]');
-                        $value = $embed->run_shortcode($value);
-                        $value = $embed->autoembed($value);
-                        $value = do_shortcode($value);
-                        if (50 < str_word_count(wp_strip_all_tags($value))) {
-                            echo wp_trim_words(wp_strip_all_tags($value), 50,
-                                '<a id="more-button" href="#more"> Mehr Anzeigen</a>');
-                        }
-                        else{
-                            echo $value;
-                        }
+                <div class="description">
+                    <?php
+                    $value = apply_filters('the_content', Materialpool_Material::get_description());
+                    $embed = $GLOBALS['wp_embed'];
+                    // $value = do_shortcode('[accordion] <h3> Beschreibung </h3>' . $value . '[/accordion]');
+                    $value = $embed->run_shortcode($value);
+                    $value = $embed->autoembed($value);
+                    $value = do_shortcode($value);
+                    if (50 < str_word_count(wp_strip_all_tags($value)) || Materialpool_Material::is_special()) {
+                        echo "<div id='description' class='description description-short'>$value</div>";
                         ?>
-                    </div>
-                    <div id="description-more" style="display: none">
-                        <?php echo $value ?>
-                        <a id="less-button" href="#less">Weniger Anzeigen</a>
-                    </div>
+                        <a id="more-button" href="#more"> Mehr Anzeigen</a>
+                        <a id="less-button" style="display: none" href="#description">Weniger Anzeigen</a>
+                        <?php
+                    } else {
+                        echo "<div id='description' class='description'>$value</div>";
+                    }
+                    ?>
                 </div>
                 <div class="detail-access-buttons">
-                    <?php echo Materialpool_Material::cta_link(); ?>
-                    <?php echo Materialpool_Material::cta_url2clipboard(); ?>
-                    <?php Materialpool_Material::get_themenseiten_for_material_html(); //TODO: doesnt work?
+                    <?php
+                    if (!Materialpool_Material::is_special()) {
+                        echo Materialpool_Material::cta_link();
+                        echo Materialpool_Material::cta_url2clipboard();
+                        Materialpool_Material::get_themenseiten_for_material_html();
+                    }
                     ?>
                 </div>
                 <div class="description-footer">
@@ -182,15 +181,17 @@
 <script>
     jQuery(document).ready(function ($) {
         $('#more-button').on('click', function () {
-            $('#description-short').hide(0, function () {
-                $('#description-more').slideDown(700);
-                $('#less-button').show();
-            });
+
+            $('#description').toggleClass("description-long");
+            $('#more-button').hide();
+            $('#less-button').show();
+
         });
         $('#less-button').on('click', function () {
-            $('#description-more').slideUp(700);
-            $('#description-short').show(0);
+            $('#description').toggleClass("description-long");
+            $('#more-button').show();
             $('#less-button').hide();
+
         });
     })
 </script>

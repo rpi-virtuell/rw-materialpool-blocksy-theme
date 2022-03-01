@@ -419,9 +419,22 @@ select.frontpage-search-field{
 }
 
 .material-detail-grid .detail-desc .description {
-    height: auto;
     margin-bottom: 20px;
+    overflow: hidden;
 }
+
+
+.material-detail-grid .detail-desc .description-long {
+    transition: max-height 1s ease-in-out;
+    max-height: 5000px !important;
+    overflow: visible;
+}
+
+
+.material-detail-grid .detail-desc .description-short {
+    max-height: 100px;
+}
+
 
 .detail-desc .cta-button, .detail-organisation-header .cta-button {
     width: 49%;
