@@ -142,15 +142,20 @@
                     $value = $embed->run_shortcode($value);
                     $value = $embed->autoembed($value);
                     $value = do_shortcode($value);
-                    if (50 < str_word_count(wp_strip_all_tags($value)) || Materialpool_Material::is_special()) {
-                        echo "<div id='description' class='description description-short'>$value</div>";
-                        ?>
-                        <a id="more-button" href="#more"> Mehr Anzeigen</a>
-                        <a id="less-button" style="display: none" href="#description">Weniger Anzeigen</a>
-                        <?php
+                    if (!Materialpool_Material::is_special()) {
+                        if (50 < str_word_count(wp_strip_all_tags($value))) {
+                            echo "<div id='description' class='description description-short'>$value</div>";
+                            ?>
+                            <a id="more-button" href="#more"> Mehr Anzeigen</a>
+                            <a id="less-button" style="display: none" href="#description">Weniger Anzeigen</a>
+                            <?php
+                        } else {
+                            echo "<div id='description' class='description description-long'>$value</div>";
+                        }
                     } else {
-                        echo "<div id='description' class='description'>$value</div>";
+                        echo "<div id='description' class='description description-long'>$value</div>";
                     }
+
                     ?>
                 </div>
                 <div class="detail-access-buttons">
