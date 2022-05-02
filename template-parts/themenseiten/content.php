@@ -8,7 +8,7 @@ global $themenseite_material_id_list;
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <?php
     if ( is_sticky() && is_home() ) :
-        echo twentyseventeen_get_svg( array( 'icon' => 'thumb-tack' ) );
+    //    echo twentyseventeen_get_svg( array( 'icon' => 'thumb-tack' ) );
     endif;
     ?>
     <header class="entry-header">

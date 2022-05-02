@@ -386,7 +386,12 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
 }
 
 .entry-card {
+    padding: 30px !important;
     padding-top: 40px !important;
+}
+
+.ct-ghost{
+    margin: auto;
 }
 
 .entry-card.alpika {
@@ -782,8 +787,8 @@ div.material-suche .facetwp-btn:hover {
 
 .facet-treffer-content .material-rating {
     position: absolute;
-    top: -41px;
-    right: -19px;
+    top: -25px;
+    right: -20px;
 }
 
 .search-cover {
