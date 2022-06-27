@@ -13,9 +13,10 @@ ob_start();
 <div class="startseite-block-content">
     <div class="frontpage-search-container">
         <form action="/facettierte-suche/">
-        <div class="frontpage-search">
+            <div class="frontpage-search">
                 <div></div>
-                <input class="frontpage-search-field search" type="text" name="fwp_suche" placeholder="Suchbegriff eingeben">
+                <input class="frontpage-search-field search" type="text" name="fwp_suche"
+                       placeholder="Suchbegriff eingeben">
                 <select class="frontpage-search-field" name="fwp_bildungsstufe">
                     <option value="">Alle Bereiche</option>
                     <option value="elementary">Elementarbereich</option>
@@ -29,7 +30,7 @@ ob_start();
                 </select>
                 <input class="frontpage-search-field material-filter-button" type="submit" value="Suchen">
                 <div></div>
-        </div>
+            </div>
         </form>
     </div>
 </div>
@@ -186,6 +187,9 @@ if ($show_neu == 1) {
             include get_stylesheet_directory() . "/facetwp_templates/material.php";
             ?>
         </div>
+    </div>
+    <div class="home-page-show-more">
+        <a class="button" href="<?php echo home_url() . '/facettierte-suche/'; ?>">Mehr Material</a>
     </div>
     <div class="clear"></div>
     <?php
