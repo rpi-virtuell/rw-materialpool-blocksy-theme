@@ -43,12 +43,17 @@
                                     ?>
                                     <div class="facet-treffer<?php echo (Materialpool_Material::is_alpika()) ? ' alpika' : ''; ?><?php echo (Materialpool_Material::is_special()) ? ' special' : ''; ?>">
                                         <div class="facet-treffer-content">
-                                            <?php if (Materialpool_Material::cover_facet_html() && (!in_array(strrchr(Materialpool_Material::get_url(), '.'), array(
+                                            <?php
+                                            if (Materialpool_Material::cover_facet_html() &&
+                                                (!in_array(strrchr(Materialpool_Material::get_url(), '.'),
+                                                    array(
                                                         '.docx',
                                                         '.doc',
                                                         '.odt'
-                                                    ) || Materialpool_Material::get_picture() != ''))
-                                            ): ?>
+                                                    ))) ||
+                                                Materialpool_Material::get_picture() != ''
+                                            ):
+                                                ?>
                                                 <div class="material-cover">
                                                     <?php echo Materialpool_Material::cover_facet_html(); ?>
                                                 </div>
@@ -63,7 +68,8 @@
                                                 <?php echo Materialpool_Material::get_bildungsstufen(); ?>
                                             </div>
                                             <p class="search-head">
-                                                <?php if (Materialpool_Material::get_organisation()[0]) {
+                                                <?php
+                                                if (Materialpool_Material::get_organisation()[0]) {
                                                     echo Materialpool_Material::organisation_facet_html() . '<br>';
                                                 }
                                                 if (Materialpool_Material::get_autor()) {
