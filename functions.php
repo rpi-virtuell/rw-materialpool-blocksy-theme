@@ -218,13 +218,13 @@ add_filter('facetwp_pre_filtered_post_ids', 'facetwp_query_args_themenseiten', 1
 function my_facetwp_facet_html($output, $params)
 {
     if ('alpika' == $params['facet']['name']) {
-        $output = str_replace('>1 <', '>aus den Instituten <', $output);
+        $output = str_replace('>1<', '>aus den Instituten <', $output);
     }
     if ('alpika_organisation' == $params['facet']['name']) {
-        $output = str_replace('>1 <', '>ALPIKA <', $output);
+        $output = str_replace('>1<', '>ALPIKA <', $output);
     }
     if ('erscheinungsjahr' == $params['facet']['name']) {
-        $output = str_replace('>0 <', '>Keine Angabe <', $output);
+        $output = str_replace('>0<', '>Keine Angabe <', $output);
     }
 
     return $output;
