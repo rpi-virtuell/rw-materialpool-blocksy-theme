@@ -95,6 +95,11 @@ body.loading .loading-icon{
     margin: 5px;
 }
 
+.facetwp-selections li:hover{
+    background-color: var(--linkHoverColor);
+    cursor: pointer;
+}
+
 .info-button button {
     background-color: grey;
     width: 30px;
@@ -456,6 +461,9 @@ select.frontpage-search-field{
 .detail-desc .cta-button, .detail-organisation-header .cta-button {
     width: 49%;
 }
+.detail-access-buttons{
+    display: inline-flex;
+}
 
 .material-detail-grid .detail-desc .description-footer {
     text-align: end;
@@ -485,10 +493,10 @@ select.frontpage-search-field{
     margin: 10px 0;
 }
 
-.autor-cover-container, .organisation-cover- {
+.autor-cover-container, .organisation-cover-container, .organisation-cover h2 {
     height: fit-content;
     width: fit-content;
-    margin: auto;
+    margin: auto !important;
 }
 
 .autor-cover img, .organisation-cover img {

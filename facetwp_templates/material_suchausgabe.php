@@ -32,10 +32,16 @@
                     <div class="facet-treffer">
                         <div class="facet-treffer-content">
                             <h2>
-                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                <?php $currentargs = (empty($_POST['data']['http_params']['get']))?$_GET:$_POST['data']['http_params']['get'];
+                                unset($currentargs['fwp_per_page']);
+                                $post_link = get_permalink(get_the_ID());
+                                ?>
+                                <a href="<?php echo add_query_arg($currentargs , get_the_permalink()) ?>"><?php the_title(); ?></a>
                             </h2>
+                            <?php
+                            ?>
                             <?php if (!empty(Materialpool_Material::get_cover())) { ?>
-                                <a class="search-cover boundless-image" href="<?php the_permalink(); ?>" tabindex="-1">
+                                <a class="search-cover boundless-image" href="<?php echo add_query_arg($currentargs , get_the_permalink()) ?>" tabindex="-1">
                                     <img src="<?php echo Materialpool_Material::get_cover() ?>"
                                          onerror="this.onerror = null; this.src=' <?php echo get_stylesheet_directory_uri() . "/assets/material_placeholder.jpg" ?>'"
                                          alt="">

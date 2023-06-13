@@ -468,14 +468,15 @@ div.material-detail-image, .material-detail .materialpool-template-material-pict
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
-    margin-top: 5px;
+    margin: 5px;
     color: white !important;
     width: 100%;
 }
 
-.material-column a.cta-button:hover {
-    background-color: cornflowerblue;
+.detail-access-buttons .cta-button:hover {
+    background-color: var(--linkHoverColor) !important;
     box-shadow: none;
+    cursor: pointer !important;
 
 }
 
