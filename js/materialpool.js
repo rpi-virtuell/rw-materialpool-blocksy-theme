@@ -220,3 +220,7 @@ jQuery(document).ready(function ($) {
         jQuery('.detail-info').slidetoggle(1000);
     })
 });
+
+//ACF Feld füller für Themenseiten Themengruppen
+
+//WIP

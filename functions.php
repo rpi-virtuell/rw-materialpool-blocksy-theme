@@ -345,3 +345,38 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
+
+add_filter('acf/load_field/name=material_themengruppen', function($field){
+   $field['choices'] = [];
+
+});
+
+add_action('wp_ajax_pa_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
+add_action('wp_ajax_nopriv_pa_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
+
+function get_themengruppen_by_themenseiten($themenseite_id){
+     // Verify nonce
+  if( !isset( $_POST['pa_nonce'] ) || !wp_verify_nonce( $_POST['pa_nonce'], 'pa_nonce' ) )
+    die('Permission denied');
+
+  // Get country var
+    $themenseite_id = $_POST['themenseite'];
+
+  // Get field from options page
+    $gruppen = Materialpool_Themenseite::get_gruppen($themenseite_id);
+
+  // Returns Area by Country selected if selected country exists in array
+  if (is_array($gruppen)) {
+      $gruppen = array_column($gruppen, 'gruppe');
+
+    return wp_send_json($gruppen);
+
+  } else {
+
+    $arr_data = array();
+    return wp_send_json($gruppen);
+  }
+
+  die();
+
+}
