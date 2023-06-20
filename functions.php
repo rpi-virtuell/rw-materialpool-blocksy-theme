@@ -32,6 +32,12 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('load_rw_materialpool_js_ui_position', get_stylesheet_directory_uri() . '/js/jquery.ui.position.min.js', array(), $version, true);
 });
 
+add_action('admin_enqueue_scripts',function (){
+    $version = '1.2';
+
+    wp_enqueue_script('load_rw_materpool_admin_js', get_stylesheet_directory_uri() . '/js/materialpool_admin.js', array(), $version, true);
+
+});
 
 /**
  * Ausgabe der Themensliste auf der Startseie
@@ -351,31 +357,22 @@ add_filter('acf/load_field/name=material_themengruppen', function($field){
 
 });
 
-add_action('wp_ajax_pa_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
-add_action('wp_ajax_nopriv_pa_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
+add_action('wp_ajax_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
+add_action('wp_ajax_nopriv_get_themengruppen_by_themenseiten', 'get_themengruppen_by_themenseiten');
 
 function get_themengruppen_by_themenseiten($themenseite_id){
-     // Verify nonce
-  if( !isset( $_POST['pa_nonce'] ) || !wp_verify_nonce( $_POST['pa_nonce'], 'pa_nonce' ) )
-    die('Permission denied');
 
-  // Get country var
     $themenseite_id = $_POST['themenseite'];
 
   // Get field from options page
     $gruppen = Materialpool_Themenseite::get_gruppen($themenseite_id);
 
-  // Returns Area by Country selected if selected country exists in array
-  if (is_array($gruppen)) {
-      $gruppen = array_column($gruppen, 'gruppe');
 
+    if (isset($gruppen['auswahl']) && !is_array($gruppen['auswahl']))
+    {
+        $gruppen['auswahl'] = get_object_vars($gruppen['auswahl']);
+    }
     return wp_send_json($gruppen);
-
-  } else {
-
-    $arr_data = array();
-    return wp_send_json($gruppen);
-  }
 
   die();
 
