@@ -253,6 +253,12 @@ function catch_thema_image()
 
 add_filter('facetwp_facet_html', 'my_facetwp_facet_html', 10, 2);
 
+function my_custom_dp_duplicate_post( $new_post_id, $post, $status ) {
+    update_post_meta($new_post_id, 'material_views','');
+}
+
+add_action( 'dp_duplicate_post', 'my_custom_dp_duplicate_post' ,3 ,10);
+
 /*add accordeons to [accordion].<h3>..[/accordion] shortcode
   [accordion active="1"].<h3>..[/accordion]
 */
